@@ -14,18 +14,27 @@ Route::get('/relatorio', [RelatorioController::class, 'index'])->name('relatorio
 Route::get('/relatorio/export', [RelatorioController::class, 'export'])->name('relatorio.export');
 
 
-Route::get('/configuracoes', function () {
+Route::get('/configuracoes', function (\Illuminate\Http\Request $request) {
     if (!session()->has('user_id')) {
         return redirect()->route('login');
     }
     $usuario = App\Models\modelUsuario::find(session('user_id'));
-    // Busca logs do próprio usuário (ajuste o nome da tabela/campos conforme seu sistema)
-    $logs = DB::table('logs')
-        ->where('id_usuario', $usuario->id)
-        ->orderByDesc('created_at')
-        ->limit(50)
-        ->get();
-    return view('configuracoes', compact('usuario', 'logs'));
+    $usuarios = App\Models\modelUsuario::all();
+    $query = App\Models\Log::with('usuario');
+    if ($usuario->is_admin) {
+        if ($request->filled('usuario_id')) {
+            $query->where('id_usuario', $request->usuario_id);
+        }
+        if ($request->filled('acao')) {
+            $query->where('acao', $request->acao);
+        }
+        $logs = $query->orderByDesc('created_at')->limit(50)->get();
+        $acoes = App\Models\Log::distinct()->pluck('acao');
+    } else {
+        $logs = $query->where('id_usuario', $usuario->id)->orderByDesc('created_at')->limit(50)->get();
+        $acoes = App\Models\Log::where('id_usuario', $usuario->id)->distinct()->pluck('acao');
+    }
+    return view('configuracoes', compact('usuario', 'logs', 'usuarios', 'acoes'));
 })->name('configuracoes');
 Route::get('/produtos', function () {
     if (!session()->has('user_id')) {

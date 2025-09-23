@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nome', 255);
             $table->string('senha', 255);
             $table->string('cpf', 255)->unique(); // geralmente CPF deve ser único
+            $table->boolean('is_admin')->default(false); // campo para indicar se é admin
             $table->timestamps(); // created_at e updated_at
         });
     }

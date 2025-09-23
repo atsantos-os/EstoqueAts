@@ -81,6 +81,7 @@
                     </button>
                 </div>
             </div>
+            <div class="tabela-produtos-wrapper">
             <table class="nova-tabela-produtos">
                 <thead>
                     <tr>
@@ -105,13 +106,16 @@
                         <td>{{ $estoques[$produto->id_produto]->quantidade ?? 0 }}</td>
                         <td>R$ {{ number_format($produto->preco_produto, 2, ',', '.') }}</td>
                         <td>
-                            <button title="Editar" style="background:none;border:none;color:#2678a3;"><i class="fa-solid fa-pen"></i></button>
-                            <button title="Excluir" style="background:none;border:none;color:#e74c3c;margin-left:8px;"><i class="fa-solid fa-trash"></i></button>
+                            @if(isset($usuario) && $usuario->is_admin)
+                                <button title="Editar" style="background:none;border:none;color:#2678a3;"><i class="fa-solid fa-pen"></i></button>
+                                <button title="Excluir" style="background:none;border:none;color:#e74c3c;margin-left:8px;"><i class="fa-solid fa-trash"></i></button>
+                            @endif
                         </td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
+            </div>
         </div>
     </div>
     <!-- Modal Novo Produto -->

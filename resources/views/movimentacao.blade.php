@@ -40,7 +40,9 @@
                         <td>{{ $mov->data_solicitacao }}</td>
                         <td>{{ $mov->usuario->nome ?? '-' }}</td>
                         <td>
-                            <button class="btn-excluir" title="Excluir"><i class="fa-solid fa-trash"></i></button>
+                            @if(isset($usuario) && $usuario->is_admin)
+                                <button class="btn-excluir" title="Excluir"><i class="fa-solid fa-trash"></i></button>
+                            @endif
                         </td>
                     </tr>
                     @endforeach

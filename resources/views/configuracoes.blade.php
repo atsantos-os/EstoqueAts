@@ -13,13 +13,13 @@
 	@include('components.header')
 	@include('components.sidebar')
 	<div class="main-content">
-		<div class="container" style="padding:2.5rem 2rem;">
+	<div class="container">
 			<h2 class="configuracoes-title">Configurações</h2>
-			<div style="margin: 1.5rem 0 2.5rem 0; text-align:right;">
-				<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display:inline;">
+			<div class="logout-container logout-right">
+				<form id="logout-form" action="{{ route('logout') }}" method="POST" class="logout-form">
 					@csrf
-					<button type="submit" class="logout-btn" style="background:#e74c3c;color:#fff;border:none;padding:10px 22px;border-radius:8px;font-size:1rem;cursor:pointer;display:inline-flex;align-items:center;gap:10px;">
-						<span style="display:inline-block;vertical-align:middle;">
+					<button type="submit" class="logout-btn">
+						<span class="logout-icon">
 							<!-- SVG logout moderno -->
 							<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
 								<path d="M16 17l1.41-1.41L13.83 12H21v-2h-7.17l3.58-3.59L16 7l-5 5 5 5z"/>
@@ -31,11 +31,29 @@
 				</form>
 			</div>
 			<div class="configuracoes-logs">
-				<h3 class="configuracoes-logs-title">Minhas ações</h3>
-				<table>
+				<h3 class="configuracoes-logs-title">@if(isset($usuario) && $usuario->is_admin) Todas as ações @else Minhas ações @endif</h3>
+				@if(isset($usuario) && $usuario->is_admin)
+				<form method="GET" action="" class="filtro-logs-form">
+					<select name="usuario_id" class="filtro-usuario">
+						<option value="">Todos os usuários</option>
+						@foreach($usuarios as $u)
+							<option value="{{ $u->id }}" @if(request('usuario_id') == $u->id) selected @endif>{{ $u->nome }}</option>
+						@endforeach
+					</select>
+					<select name="acao" class="filtro-acao">
+						<option value="">Todas as ações</option>
+						@foreach($acoes as $acao)
+							<option value="{{ $acao }}" @if(request('acao') == $acao) selected @endif>{{ $acao }}</option>
+						@endforeach
+					</select>
+					<button type="submit" class="btn-filtrar">Filtrar</button>
+				</form>
+				@endif
+				<table class="tabela-logs">
 					<thead>
 						<tr>
 							<th>Data</th>
+							<th>Usuário</th>
 							<th>Ação</th>
 							<th>Detalhes</th>
 							<th>IP</th>
@@ -45,12 +63,13 @@
 					@forelse($logs as $log)
 						<tr>
 							<td>{{ date('d/m/Y H:i', strtotime($log->created_at)) }}</td>
+							<td>{{ $log->usuario->nome ?? '-' }}</td>
 							<td>{{ $log->acao }}</td>
 							<td>{{ $log->detalhes }}</td>
 							<td>{{ $log->ip }}</td>
 						</tr>
 					@empty
-						<tr><td colspan="4" style="text-align:center;color:#888;">Nenhuma ação registrada.</td></tr>
+						<tr><td colspan="5" class="nenhuma-acao">Nenhuma ação registrada.</td></tr>
 					@endforelse
 					</tbody>
 				</table>
