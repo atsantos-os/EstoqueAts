@@ -10,4 +10,8 @@ class Log extends Model
     protected $fillable = [
         'id_usuario', 'acao', 'detalhes', 'ip'
     ];
+    public function usuario()
+    {
+        return $this->belongsTo(modelUsuario::class, 'id_usuario', 'id');
+    }
 }

@@ -69,7 +69,7 @@
 							<td>{{ $log->ip }}</td>
 						</tr>
 					@empty
-						<tr><td colspan="5" class="nenhuma-acao">Nenhuma ação registrada.</td></tr>
+						<tr><td colspan="5" class="nenhuma-acao" style="text-align:center;">Nenhuma ação registrada.</td></tr>
 					@endforelse
 					</tbody>
 				</table>
