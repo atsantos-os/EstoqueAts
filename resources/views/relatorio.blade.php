@@ -76,7 +76,7 @@
                 </table>
             </div>
             <div class="relatorio-grafico">
-                <h3 style="color:#235596;font-size:1.3rem;margin-bottom:1rem;">Gráfico de Movimentações</h3>
+                <h3 class="relatorio-grafico-title">Gráfico de Movimentações</h3>
                 <canvas id="graficoMovimentacoes" height="120"></canvas>
             </div>
         </div>

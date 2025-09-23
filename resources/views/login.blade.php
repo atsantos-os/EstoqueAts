@@ -23,9 +23,9 @@
 		<div class="login-left">
 			<div class="login-container">
 
-				<h2 style="margin-bottom:0.3rem;">Controle de Estoque</h2>
-				<div style="text-align:center;margin-bottom:1.1rem;">
-					<span style="display:inline-block;font-size:1.05rem;color:#222;font-weight:500;line-height:1.3;">Acesse sua conta para gerenciar o estoque<br><span style='color:#3c97c1;font-weight:400;'>Realize o login para continuar</span></span>
+				<h2 class="login-title">Controle de Estoque</h2>
+				<div class="login-subtitle-container">
+					<span class="login-subtitle">Acesse sua conta para gerenciar o estoque<br><span class="login-subtitle-highlight">Realize o login para continuar</span></span>
 				</div>
 				<form method="POST" action="{{ url('/login') }}">
 					@csrf
@@ -38,10 +38,10 @@
 					</div>
 					<div class="form-group">
 						<label for="senha">Senha</label>
-						<div class="input-icon" style="position:relative;">
+						<div class="input-icon">
 							<i class="fa-solid fa-lock"></i>
-							<input type="password" id="senha" name="senha" placeholder="Digite sua senha" required style="padding-right:2.2rem;">
-							<button type="button" id="toggleSenha" style="background:none;border:none;position:absolute;right:10px;top:50%;transform:translateY(-50%);cursor:pointer;padding:0;">
+							<input type="password" id="senha" name="senha" placeholder="Digite sua senha" required class="input-senha">
+							<button type="button" id="toggleSenha" class="toggle-senha-btn">
 								<i class="fa-regular fa-eye" id="eyeIcon"></i>
 							</button>
 						</div>

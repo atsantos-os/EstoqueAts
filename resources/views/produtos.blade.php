@@ -49,15 +49,15 @@
 
     <!-- Modal Visualizar Produto -->
     <div id="modalVisualizarProduto" class="novo-produto-modal" style="display:none;">
-    <div class="modal-content" style="background:#fff;border-radius:20px;box-shadow:0 8px 32px rgba(44,62,80,0.13);min-width:340px;max-width:480px;padding:2.5rem 2.2rem 2rem 2.2rem;position:relative;text-align:left;font-family:'Montserrat',Arial,sans-serif;">
-            <button class="close-modal" id="closeModalVisualizarProduto" style="position:absolute;top:18px;right:22px;font-size:2rem;color:#2678a3;background:none;border:none;cursor:pointer;font-weight:bold;">&times;</button>
-            <div style="display:flex;align-items:center;gap:18px;margin-bottom:1.2rem;">
-                <span style="font-size:2.6rem;color:#3c97c1;">
+    <div class="modal-content visual-produto-modal-content">
+            <button class="close-modal visual-produto-close" id="closeModalVisualizarProduto">&times;</button>
+            <div class="visual-produto-header">
+                <span class="visual-produto-icon">
                     <i class="fa-solid fa-box-open"></i>
                 </span>
-                <h3 style="font-size:1.45rem;color:#2678a3;font-weight:700;margin:0;">Informações do Produto</h3>
+                <h3 class="visual-produto-title">Informações do Produto</h3>
             </div>
-            <div id="visualizarProdutoInfo" style="margin-bottom:1.2rem;">
+            <div id="visualizarProdutoInfo" class="visual-produto-info">
                 <!-- Conteúdo preenchido via JS -->
             </div>
         </div>
@@ -68,9 +68,9 @@
         <div class="produtos-container">
             <div class="produtos-header">
                 <h2>Produtos</h2>
-                <div style="display:flex;gap:1rem;align-items:center;">
-                    <input id="pesquisaProduto" type="text" placeholder="Pesquisar produto..." style="padding:0.5rem 1rem;border-radius:8px;border:1px solid #b0c4de;min-width:220px;">
-                    <select id="filtroCategoria" style="padding:0.5rem 1rem;border-radius:8px;border:1px solid #b0c4de;">
+                <div class="produtos-filtros-row">
+                    <input id="pesquisaProduto" type="text" placeholder="Pesquisar produto..." class="produtos-filtro-input">
+                    <select id="filtroCategoria" class="produtos-filtro-select">
                         <option value="">Todas as categorias</option>
                         @foreach($categorias as $cat)
                             <option value="{{ $cat->id_categoria }}">{{ $cat->nome_categoria }}</option>
@@ -107,8 +107,8 @@
                         <td>R$ {{ number_format($produto->preco_produto, 2, ',', '.') }}</td>
                         <td>
                             @if(isset($usuario) && $usuario->is_admin)
-                                <button title="Editar" style="background:none;border:none;color:#2678a3;"><i class="fa-solid fa-pen"></i></button>
-                                <button title="Excluir" style="background:none;border:none;color:#e74c3c;margin-left:8px;"><i class="fa-solid fa-trash"></i></button>
+                                <button title="Editar" class="btn-editar-produto"><i class="fa-solid fa-pen"></i></button>
+                                <button title="Excluir" class="btn-excluir-produto"><i class="fa-solid fa-trash"></i></button>
                             @endif
                         </td>
                     </tr>
@@ -119,21 +119,21 @@
         </div>
     </div>
     <!-- Modal Novo Produto -->
-    <div id="modalNovoProdutoNovo" class="novo-produto-modal">
-        <div class="modal-content" style="max-width:420px;padding:2.5rem 2.2rem 2rem 2.2rem;box-shadow:0 8px 32px rgba(44,62,80,0.13);border-radius:18px;background:#fff;">
-            <span class="close-modal" id="closeModalNovoProdutoNovo" style="font-size:2rem;color:#b0b0b0;position:absolute;top:18px;right:28px;cursor:pointer;">&times;</span>
-            <h3 style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:1.5rem;color:#235596;margin-bottom:1.2rem;text-align:center;">Cadastrar Novo Produto</h3>
-            <form id="formNovoProdutoNovo" style="display:flex;flex-direction:column;gap:1.1rem;">
+        <div id="modalNovoProdutoNovo" class="novo-produto-modal">
+        <div class="modal-content novo-produto-modal-content">
+            <span class="close-modal novo-produto-close" id="closeModalNovoProdutoNovo">&times;</span>
+            <h3 class="novo-produto-title">Cadastrar Novo Produto</h3>
+            <form id="formNovoProdutoNovo" class="novo-produto-form">
                 <input class="input-novo-prod" type="text" name="codigo_produto" placeholder="Código do Produto" required>
                 <input class="input-novo-prod" type="text" name="nome_produto" placeholder="Nome do Produto" required>
-                <textarea class="input-novo-prod" name="descricao_produto" placeholder="Descrição" rows="2" style="resize:vertical;"></textarea>
-                <div style="display:flex;gap:1rem;">
-                    <select class="input-novo-prod" name="condicao" required style="flex:1;">
+                <textarea class="input-novo-prod" name="descricao_produto" placeholder="Descrição" rows="2"></textarea>
+                <div class="novo-produto-flex-row">
+                    <select class="input-novo-prod novo-produto-flex" name="condicao" required>
                         <option value="">Condição</option>
                         <option value="NOVO">Novo</option>
                         <option value="USADO">Usado</option>
                     </select>
-                    <input class="input-novo-prod" type="text" name="tamanho" placeholder="Tamanho" style="flex:1;">
+                    <input class="input-novo-prod novo-produto-flex" type="text" name="tamanho" placeholder="Tamanho">
                 </div>
                 <input class="input-novo-prod" type="number" name="preco_produto" placeholder="Preço" step="0.01" min="0">
                 <input class="input-novo-prod" type="number" name="quantidade_inicial" placeholder="Quantidade Inicial em Estoque" min="0" value="0" required>
@@ -149,33 +149,11 @@
                         <option value="{{ $forn->id_fornecedor }}">{{ $forn->nome_fantasia }}</option>
                     @endforeach
                 </select>
-                <button type="submit" style="background:#2678a3;color:#fff;font-weight:600;font-size:1.1rem;padding:0.7rem 0;border:none;border-radius:8px;box-shadow:0 2px 8px #2678a31a;transition:background 0.2s;cursor:pointer;">Cadastrar</button>
+                <button type="submit" class="btn-cadastrar-produto">Cadastrar</button>
             </form>
-            <div id="novoProdutoMsgNovo" style="margin-top:1.1rem;font-size:1rem;text-align:center;"></div>
+            <div id="novoProdutoMsgNovo" class="novo-produto-msg"></div>
         </div>
     </div>
-    <style>
-        .input-novo-prod {
-            padding: 0.7rem 1rem;
-            border-radius: 8px;
-            border: 1px solid #b0c4de;
-            font-size: 1rem;
-            font-family: 'Montserrat', sans-serif;
-            background: #f7fafd;
-            color: #2d3a4a;
-            transition: border 0.2s;
-            outline: none;
-            width: 100%;
-            box-sizing: border-box;
-        }
-        .input-novo-prod:focus {
-            border: 1.5px solid #2678a3;
-            background: #fff;
-        }
-        .novo-produto-modal .modal-content {
-            position: relative;
-        }
-    </style>
     <script>
         // Modal Visualizar Produto
         const modalVisualizarProduto = document.getElementById('modalVisualizarProduto');

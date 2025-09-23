@@ -69,10 +69,10 @@
                 <input type="number" name="quantidade" placeholder="Quantidade" min="1" required>
                 <input type="date" name="data_solicitacao" value="{{ date('Y-m-d') }}" required>
                 <input type="hidden" name="retirada_por" value="{{ $usuario->id }}">
-                <span style="background:#f3f3f3;color:#888;padding:0.5em 1em;border-radius:6px;" title="Movimentado por">{{ $usuario->nome }}</span>
+                <span class="movimentado-por" title="Movimentado por">{{ $usuario->nome }}</span>
                 <button type="submit">Cadastrar</button>
             </form>
-            <div id="novaMovMsg" style="margin-top:1rem;font-size:1rem;"></div>
+            <div id="novaMovMsg" class="nova-mov-msg"></div>
         </div>
     </div>
     <script>

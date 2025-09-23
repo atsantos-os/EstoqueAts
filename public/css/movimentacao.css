@@ -1,3 +1,15 @@
+/* Estilos movidos do inline do movimentacao.blade.php */
+.movimentado-por {
+    background: #f3f3f3;
+    color: #888;
+    padding: 0.5em 1em;
+    border-radius: 6px;
+}
+.nova-mov-msg {
+    margin-top: 1rem;
+    font-size: 1rem;
+    text-align: center;
+}
 /* CSS moderno para página de movimentação */
 .mov-main {
     min-height: 100vh;

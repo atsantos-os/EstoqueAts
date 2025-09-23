@@ -13,35 +13,34 @@
     @include('components.sidebar')
 
     <div class="main-content">
-        <div class="container" style="padding:2.5rem 2rem;">
-            <h2 style="margin-bottom:2.5rem;text-align:left;font-size:2.2rem;color:#2678a3;font-weight:700;">Dashboard</h2>
+    <div class="container dashboard-container">
+            <h2 class="dashboard-title">Dashboard</h2>
             <div class="dashboard-cards">
                 <div class="card card-total">
-                    <div class="card-title"><i class="fa-solid fa-boxes-stacked" style="color:#3c97c1;margin-right:8px;"></i>Total de Produtos</div>
+                    <div class="card-title"><i class="fa-solid fa-boxes-stacked icon-total"></i>Total de Produtos</div>
                     <div class="card-value">{{ $totalProdutos }}</div>
                 </div>
                 <div class="card card-low">
-                    <div class="card-title"><i class="fa-solid fa-triangle-exclamation" style="color:#e67e22;margin-right:8px;"></i>Produtos em Baixa</div>
+                    <div class="card-title"><i class="fa-solid fa-triangle-exclamation icon-low"></i>Produtos em Baixa</div>
                     <div class="card-value">{{ $produtosEmBaixa }}</div>
                 </div>
                 <div class="card card-mov">
-                    <div class="card-title"><i class="fa-solid fa-arrows-rotate" style="color:#27ae60;margin-right:8px;"></i>Movimentações Hoje</div>
+                    <div class="card-title"><i class="fa-solid fa-arrows-rotate icon-mov"></i>Movimentações Hoje</div>
                     <div class="card-value">{{ $movimentacoesHoje }}</div>
                 </div>
             </div>
-            <div style="margin-top:3rem;text-align:left;">
-            <div style="margin-top:3rem;text-align:left;">
-                <div style="display:flex;gap:1.5rem;margin-bottom:2.2rem;flex-wrap:wrap;justify-content:center;align-items:flex-start;">
-                    <div style="flex:1;min-width:340px;max-width:540px;background:#fff;border-radius:12px;box-shadow:0 2px 10px #eaf1f7;padding:1.5rem 1.2rem 1.2rem 1.2rem;display:flex;flex-direction:column;align-items:center;">
-                        <h4 style="color:#2678a3;font-size:1.18rem;font-weight:600;margin-bottom:1.1rem;">Produtos por Categoria</h4>
-                        <canvas id="graficoProdutosCategoria" style="width:100%;max-width:480px;min-width:240px;" height="260"></canvas>
+            <div class="dashboard-graphs-section">
+                <div class="dashboard-graphs-wrapper">
+                    <div class="dashboard-graph-card">
+                        <h4 class="dashboard-graph-title">Produtos por Categoria</h4>
+                        <canvas id="graficoProdutosCategoria" class="dashboard-graph-canvas" height="260"></canvas>
                     </div>
-                    <div style="flex:1;min-width:340px;max-width:540px;background:#fff;border-radius:12px;box-shadow:0 2px 10px #eaf1f7;padding:1.5rem 1.2rem 1.2rem 1.2rem;display:flex;flex-direction:column;align-items:center;">
-                        <h4 style="color:#2678a3;font-size:1.18rem;font-weight:600;margin-bottom:1.1rem;">Movimentações por Tipo</h4>
-                        <canvas id="graficoMovimentacoesTipo" style="width:100%;max-width:480px;min-width:240px;" height="260"></canvas>
+                    <div class="dashboard-graph-card">
+                        <h4 class="dashboard-graph-title">Movimentações por Tipo</h4>
+                        <canvas id="graficoMovimentacoesTipo" class="dashboard-graph-canvas" height="260"></canvas>
                     </div>
                 </div>
-                <h3 style="color:#2678a3;margin-bottom:1rem;">Movimentações Recentes</h3>
+                <h3 class="dashboard-mov-title">Movimentações Recentes</h3>
                 <table class="table-mov">
                     <thead>
                         <tr>

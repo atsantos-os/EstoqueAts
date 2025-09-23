@@ -1,3 +1,125 @@
+/* Estilos movidos do inline do produtos.blade.php */
+.visual-produto-modal-content {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(44,62,80,0.13);
+    min-width: 340px;
+    max-width: 480px;
+    padding: 2.5rem 2.2rem 2rem 2.2rem;
+    position: relative;
+    text-align: left;
+    font-family: 'Montserrat',Arial,sans-serif;
+}
+.visual-produto-close {
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    font-size: 2rem;
+    color: #2678a3;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+.visual-produto-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 1.2rem;
+}
+.visual-produto-icon {
+    font-size: 2.6rem;
+    color: #3c97c1;
+}
+.visual-produto-title {
+    font-size: 1.45rem;
+    color: #2678a3;
+    font-weight: 700;
+    margin: 0;
+}
+.visual-produto-info {
+    margin-bottom: 1.2rem;
+}
+.produtos-filtros-row {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+.produtos-filtro-input {
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #b0c4de;
+    min-width: 220px;
+}
+.produtos-filtro-select {
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #b0c4de;
+}
+.btn-editar-produto {
+    background: none;
+    border: none;
+    color: #2678a3;
+}
+.btn-excluir-produto {
+    background: none;
+    border: none;
+    color: #e74c3c;
+    margin-left: 8px;
+}
+.novo-produto-modal-content {
+    max-width: 420px;
+    padding: 2.5rem 2.2rem 2rem 2.2rem;
+    box-shadow: 0 8px 32px rgba(44,62,80,0.13);
+    border-radius: 18px;
+    background: #fff;
+    position: relative;
+}
+.novo-produto-close {
+    font-size: 2rem;
+    color: #b0b0b0;
+    position: absolute;
+    top: 18px;
+    right: 28px;
+    cursor: pointer;
+}
+.novo-produto-title {
+    font-family: 'Montserrat',sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #235596;
+    margin-bottom: 1.2rem;
+    text-align: center;
+}
+.novo-produto-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+}
+.novo-produto-flex-row {
+    display: flex;
+    gap: 1rem;
+}
+.novo-produto-flex {
+    flex: 1;
+}
+.btn-cadastrar-produto {
+    background: #2678a3;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 0.7rem 0;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px #2678a31a;
+    transition: background 0.2s;
+    cursor: pointer;
+}
+.novo-produto-msg {
+    margin-top: 1.1rem;
+    font-size: 1rem;
+    text-align: center;
+}
 @media (max-width: 600px) {
     .produtos-container {
         padding: 0.7rem 0.3rem;

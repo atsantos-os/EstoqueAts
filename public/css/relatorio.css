@@ -1,3 +1,9 @@
+/* Estilo movido do inline do relatorio.blade.php */
+.relatorio-grafico-title {
+    color: #235596;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
 body, .relatorio-main, .relatorio-container, .relatorio-header, .relatorio-table, .relatorio-filtros, .relatorio-grafico {
     font-family: 'Montserrat', Arial, sans-serif;
 }
