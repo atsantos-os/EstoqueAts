@@ -1,0 +1,176 @@
+/* CSS moderno para página de movimentação */
+.mov-main {
+    min-height: 100vh;
+    background: #f4f8fb;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 80px;
+    width: 100vw;
+    box-sizing: border-box;
+}
+.mov-container {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(44, 62, 80, 0.08);
+    max-width: 1200px;
+    width: 95%;
+    margin: 2.5rem auto;
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    box-sizing: border-box;
+}
+.mov-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2.5rem;
+}
+.mov-header h2 {
+    color: #235596;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 0;
+}
+.mov-header .btn-nova-mov {
+    background: linear-gradient(90deg,#2678a3,#3c97c1);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.8rem 2.2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    box-shadow: 0 2px 8px #2678a322;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background 0.2s;
+}
+.mov-table {
+    width: 100%;
+    margin: 1.5rem auto 0 auto;
+    border-collapse: collapse;
+    background: #fafdff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(44, 62, 80, 0.07);
+    min-height: 260px;
+}
+.mov-table th, .mov-table td {
+    padding: 1rem 1.2rem;
+    text-align: left;
+}
+.mov-table th {
+    background: #eaf4fb;
+    color: #235596;
+    font-weight: 700;
+    border-bottom: 2px solid #dbeaf5;
+}
+.mov-table tr:not(:last-child) td {
+    border-bottom: 1px solid #eaf4fb;
+}
+.mov-table tbody tr:hover {
+    background: #f0f6fa;
+}
+.mov-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.18);
+    align-items: center;
+    justify-content: center;
+}
+.mov-modal .modal-content {
+    background: #fff;
+    padding: 2.2rem 2.7rem;
+    border-radius: 14px;
+    max-width: 420px;
+    width: 100%;
+    box-shadow: 0 4px 24px #0001;
+    position: relative;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+@media (max-width: 600px) {
+    .mov-modal {
+        align-items: flex-start;
+        padding-top: 10vw;
+    }
+    .mov-modal .modal-content {
+        max-width: 100vw;
+        width: 98vw;
+        min-width: 0;
+        padding: 1rem 0.5rem 1.5rem 0.5rem;
+        border-radius: 0.7rem;
+        box-shadow: 0 2px 12px #0002;
+    }
+    .mov-modal form {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .mov-modal input, .mov-modal select {
+        font-size: 1rem;
+        padding: 0.6rem 0.7rem;
+        min-width: 0;
+    }
+    .mov-modal button[type="submit"] {
+        font-size: 1rem;
+        padding: 0.7rem 0;
+    }
+    .mov-modal .close-modal {
+        top: 8px;
+        right: 10px;
+        font-size: 2rem;
+    }
+    .mov-modal .modal-content h3 {
+        font-size: 1.1rem;
+    }
+}
+.mov-modal .modal-content h3 {
+    color: #2678a3;
+    margin-bottom: 1.2rem;
+    font-size: 1.3rem;
+}
+.mov-modal input, .mov-modal select {
+    padding: 0.7rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #b0c4de;
+    margin-bottom: 0.7rem;
+    font-size: 1rem;
+    width: 100%;
+}
+.mov-modal button[type="submit"] {
+    background: linear-gradient(90deg,#2678a3,#3c97c1);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    padding: 0.8rem 0;
+    font-size: 1.1rem;
+    margin-top: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 2px 8px #2678a322;
+}
+.mov-modal .close-modal {
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #888;
+}
+.mov-table .btn-excluir {
+    background: none;
+    border: none;
+    color: #e74c3c;
+    cursor: pointer;
+    font-size: 1.1rem;
+}

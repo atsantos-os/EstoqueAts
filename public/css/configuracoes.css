@@ -1,0 +1,92 @@
+/* Título igual ao dashboard */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+.configuracoes-title {
+    margin-bottom: 2.5rem;
+    text-align: left;
+    font-size: 2.2rem;
+    color: #2678a3;
+    font-weight: 700;
+}
+/* CSS para tela de configurações */
+.configuracoes-container {
+    padding: 2.5rem 2rem;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: left;
+    transition: transform 0.2s;
+}
+
+.configuracoes-flex-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+.configuracoes-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 80px); /* compensa header fixo */
+    width: calc(100% - 250px);      /* ocupa apenas o espaço ao lado do sidebar */
+    margin-left: 250px;             /* empurra o conteúdo para o meio da tela */
+}
+
+.configuracoes-container h2 {
+    margin-bottom: 2.5rem;
+    text-align: left;
+    font-size: 2.2rem;
+    color: #2678a3;
+    font-weight: 700;
+}
+
+.configuracoes-logs {
+    margin-top: 2.5rem;
+}
+
+.configuracoes-logs h3 {
+    color: #235596;
+    margin-bottom: 1rem;
+    font-size: 1.15rem;
+}
+
+.configuracoes-logs table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fafdff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px #2678a322;
+}
+
+.configuracoes-logs th,
+.configuracoes-logs td {
+    padding: 0.7rem 1rem;
+    text-align: left;
+}
+
+.configuracoes-logs th {
+    background: #eaf4fb;
+    color: #235596;
+    font-weight: 700;
+    border-bottom: 2px solid #dbeaf5;
+}
+
+.configuracoes-logs tr:not(:last-child) td {
+    border-bottom: 1px solid #eaf4fb;
+}
+
+.configuracoes-logs tbody tr:hover {
+    background: #f0f6fa;
+}
+.configuracoes-container:hover {
+    transform: translateY(-2px);
+}
+
+.configuracoes-logs-title {
+    color: #235596;
+    font-size: 1.15rem;
+    margin-bottom: 1.2rem;
+}
