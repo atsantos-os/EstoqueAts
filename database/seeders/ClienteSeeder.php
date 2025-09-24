@@ -10,18 +10,16 @@ class ClienteSeeder extends Seeder
     public function run(): void
     {
         DB::table('clientes')->insert([
-            ['cpf' => '123.456.789-00', 'primeiro_nome' => 'Carlos', 'contrato' => 'Contrato 1', 'supervisor' => 'Supervisor 1'],
-            ['cpf' => '987.654.321-00', 'primeiro_nome' => 'Ana', 'contrato' => 'Contrato 2', 'supervisor' => 'Supervisor 2'],
-            ['cpf' => '111.222.333-44', 'primeiro_nome' => 'Bruno', 'contrato' => 'Contrato 3', 'supervisor' => 'Supervisor 3'],
-            ['cpf' => '555.666.777-88', 'primeiro_nome' => 'Fernanda', 'contrato' => 'Contrato 4', 'supervisor' => 'Supervisor 4'],
-            ['cpf' => '999.888.777-66', 'primeiro_nome' => 'Juliana', 'contrato' => 'Contrato 5', 'supervisor' => 'Supervisor 5'],
-            ['cpf' => '222.333.444-55', 'primeiro_nome' => 'Lucas', 'contrato' => 'Contrato 6', 'supervisor' => 'Supervisor 6'],
-            ['cpf' => '333.444.555-66', 'primeiro_nome' => 'Patrícia', 'contrato' => 'Contrato 7', 'supervisor' => 'Supervisor 7'],
-            ['cpf' => '444.555.666-77', 'primeiro_nome' => 'Rafael', 'contrato' => 'Contrato 8', 'supervisor' => 'Supervisor 8'],
-            ['cpf' => '666.777.888-99', 'primeiro_nome' => 'Sofia', 'contrato' => 'Contrato 9', 'supervisor' => 'Supervisor 9'],
-            ['cpf' => '777.888.999-00', 'primeiro_nome' => 'Thiago', 'contrato' => 'Contrato 10', 'supervisor' => 'Supervisor 10'],
-            ['cpf' => '888.999.000-11', 'primeiro_nome' => 'Gabriela', 'contrato' => 'Contrato 11', 'supervisor' => 'Supervisor 11'],
-            ['cpf' => '999.000.111-22', 'primeiro_nome' => 'Marcos', 'contrato' => 'Contrato 12', 'supervisor' => 'Supervisor 12'],
+            [ 'cnpj' => '12.345.678/0001-00', 'razao_social' => 'Empresa Alpha Ltda', 'nome_fantasia' => 'Alpha', 'contrato' => 'Contrato A', 'supervisor' => 'Supervisor A' ],
+            [ 'cnpj' => '98.765.432/0001-99', 'razao_social' => 'Beta Comércio S.A.', 'nome_fantasia' => 'Beta', 'contrato' => 'Contrato B', 'supervisor' => 'Supervisor B' ],
+            [ 'cnpj' => '11.222.333/0001-44', 'razao_social' => 'Gamma Serviços ME', 'nome_fantasia' => 'Gamma', 'contrato' => 'Contrato C', 'supervisor' => 'Supervisor C' ],
+            [ 'cnpj' => '55.666.777/0001-88', 'razao_social' => 'Delta Indústria EIRELI', 'nome_fantasia' => 'Delta', 'contrato' => 'Contrato D', 'supervisor' => 'Supervisor D' ],
+            [ 'cnpj' => '99.888.777/0001-66', 'razao_social' => 'Epsilon Transportes Ltda', 'nome_fantasia' => 'Epsilon', 'contrato' => 'Contrato E', 'supervisor' => 'Supervisor E' ],
+            [ 'cnpj' => '22.333.444/0001-55', 'razao_social' => 'Zeta Soluções Ltda', 'nome_fantasia' => 'Zeta', 'contrato' => 'Contrato F', 'supervisor' => 'Supervisor F' ],
+            [ 'cnpj' => '33.444.555/0001-66', 'razao_social' => 'Eta Engenharia S.A.', 'nome_fantasia' => 'Eta', 'contrato' => 'Contrato G', 'supervisor' => 'Supervisor G' ],
+            [ 'cnpj' => '44.555.666/0001-77', 'razao_social' => 'Theta Consultoria ME', 'nome_fantasia' => 'Theta', 'contrato' => 'Contrato H', 'supervisor' => 'Supervisor H' ],
+            [ 'cnpj' => '66.777.888/0001-99', 'razao_social' => 'Iota Comércio Ltda', 'nome_fantasia' => 'Iota', 'contrato' => 'Contrato I', 'supervisor' => 'Supervisor I' ],
+            [ 'cnpj' => '77.888.999/0001-00', 'razao_social' => 'Kappa Serviços EIRELI', 'nome_fantasia' => 'Kappa', 'contrato' => 'Contrato J', 'supervisor' => 'Supervisor J' ],
         ]);
     }
 }

@@ -40,9 +40,7 @@
                         <td>{{ $mov->data_solicitacao }}</td>
                         <td>{{ $mov->usuario->nome ?? '-' }}</td>
                         <td>
-                            @if(isset($usuario) && $usuario->is_admin)
-                                <button class="btn-excluir" title="Excluir"><i class="fa-solid fa-trash"></i></button>
-                            @endif
+                            <button class="btn-excluir" title="Excluir"><i class="fa-solid fa-trash"></i></button>
                         </td>
                     </tr>
                     @endforeach
@@ -147,7 +145,6 @@
                             tr.remove();
                         } else {
                             let msg = result.message || 'Erro ao excluir movimentação.';
-                            // Exibe feedback visual abaixo da tabela
                             let feedback = document.getElementById('movFeedback');
                             if (!feedback) {
                                 feedback = document.createElement('div');

@@ -12,20 +12,20 @@
 <body>
     <!-- Modal Editar Produto -->
     <div id="modalEditarProduto" class="novo-produto-modal">
-        <div class="modal-content">
-            <span class="close-modal" id="closeModalEditarProduto">&times;</span>
-            <h3>Editar Produto</h3>
-            <form id="formEditarProduto">
+        <div class="modal-content novo-produto-modal-content">
+            <span class="close-modal novo-produto-close" id="closeModalEditarProduto">&times;</span>
+            <h3 class="novo-produto-title">Editar Produto</h3>
+            <form id="formEditarProduto" class="novo-produto-form">
                 <input class="input-novo-prod" type="text" name="codigo_produto" placeholder="Código do Produto" required>
                 <input class="input-novo-prod" type="text" name="nome_produto" placeholder="Nome do Produto" required>
                 <textarea class="input-novo-prod" name="descricao_produto" placeholder="Descrição" rows="2"></textarea>
-                <div class="edit-flex-row">
-                    <select class="input-novo-prod" name="condicao" required>
+                <div class="novo-produto-flex-row">
+                    <select class="input-novo-prod novo-produto-flex" name="condicao" required>
                         <option value="">Condição</option>
                         <option value="NOVO">Novo</option>
                         <option value="USADO">Usado</option>
                     </select>
-                    <input class="input-novo-prod" type="text" name="tamanho" placeholder="Tamanho">
+                    <input class="input-novo-prod novo-produto-flex" type="text" name="tamanho" placeholder="Tamanho">
                 </div>
                 <input class="input-novo-prod" type="number" name="preco_produto" placeholder="Preço" step="0.01" min="0">
                 <input class="input-novo-prod" type="number" name="quantidade_inicial" placeholder="Quantidade em Estoque" min="0" value="0" required>
@@ -43,7 +43,7 @@
                 </select>
                 <button type="submit" class="btn-salvar-editar">Salvar Alterações</button>
             </form>
-            <div id="editarProdutoMsg"></div>
+            <div id="editarProdutoMsg" class="novo-produto-msg"></div>
         </div>
     </div>
 

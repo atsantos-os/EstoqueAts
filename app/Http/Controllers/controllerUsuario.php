@@ -26,15 +26,11 @@ class ControllerUsuario extends Controller
             'senha' => 'required',
         ]);
 
-        $usuario = ModelUsuario::where('cpf', $request->cpfUsuario)
-            ->where('senha', $request->senha)
-            ->first();
-
-        if ($usuario) {
+        $usuario = ModelUsuario::where('cpf', $request->cpfUsuario)->first();
+        if ($usuario && \Illuminate\Support\Facades\Hash::check($request->senha, $usuario->senha)) {
             Session::put('user_id', $usuario->id);
             return redirect()->route('dashboard');
         }
-
         return back()->withErrors(['msg' => 'CPF ou senha incorretos']);
     }
 

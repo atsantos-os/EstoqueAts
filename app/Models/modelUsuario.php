@@ -15,6 +15,7 @@ class modelUsuario extends Authenticatable
         'nome',
         'cpf',
         'senha',
+        'is_admin',
     ];
 
     public $timestamps = true;

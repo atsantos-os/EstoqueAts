@@ -79,9 +79,6 @@ class MovimentacaoController extends Controller
     {
         $mov = Movimentacao::findOrFail($id);
         $usuarioLogado = session('user_id');
-        if ($mov->retirada_por != $usuarioLogado) {
-            return response()->json(['success' => false, 'message' => 'Você só pode excluir suas próprias movimentações.'], 403);
-        }
         // Atualiza estoque ao remover movimentação
         $estoque = Estoque::where('id_produto', $mov->id_produto)->first();
         if ($estoque) {

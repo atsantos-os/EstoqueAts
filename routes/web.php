@@ -1,3 +1,4 @@
+
 <?php
 
 
@@ -6,6 +7,83 @@ use App\Models\modelUsuario;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\MovimentacaoController;
 use App\Http\Controllers\RelatorioController;
+
+// Inativar usuário (apenas admin)
+// Alternar ativação/inativação do usuário (apenas admin)
+Route::post('/usuario/toggle-ativo/{id}', function ($id) {
+    if (!session()->has('user_id')) {
+        return redirect()->route('login');
+    }
+    $usuario = App\Models\modelUsuario::find(session('user_id'));
+    if (!$usuario || !$usuario->is_admin) {
+        abort(403, 'Acesso não autorizado');
+    }
+    $user = App\Models\modelUsuario::findOrFail($id);
+    $user->ativo = !$user->ativo;
+    $user->save();
+    $msg = $user->ativo ? 'Usuário ativado com sucesso!' : 'Usuário inativado com sucesso!';
+    return redirect()->route('usuarios')->with('success', $msg);
+})->name('usuario.toggleAtivo');
+
+// Editar usuário (apenas admin)
+Route::post('/usuario/editar/{id}', function (\Illuminate\Http\Request $request, $id) {
+    if (!session()->has('user_id')) {
+        return redirect()->route('login');
+    }
+    $usuario = App\Models\modelUsuario::find(session('user_id'));
+    if (!$usuario || !$usuario->is_admin) {
+        abort(403, 'Acesso não autorizado');
+    }
+    $user = App\Models\modelUsuario::findOrFail($id);
+    $validated = $request->validate([
+        'nome' => 'required|max:255',
+        'cpf' => 'required|max:14|unique:usuarios,cpf,' . $id,
+        'is_admin' => 'required|in:0,1',
+    ]);
+    $user->nome = $validated['nome'];
+    $user->cpf = $validated['cpf'];
+    $user->is_admin = $validated['is_admin'];
+    $user->save();
+    return redirect()->route('usuarios')->with('success', 'Informações do usuário atualizadas!');
+})->name('usuario.editar');
+
+// Rota de listagem de usuários (apenas admin)
+Route::get('/usuarios', function () {
+    if (!session()->has('user_id')) {
+        return redirect()->route('login');
+    }
+    $usuario = App\Models\modelUsuario::find(session('user_id'));
+    if (!$usuario || !$usuario->is_admin) {
+        abort(403, 'Acesso não autorizado');
+    }
+    $usuarios = App\Models\modelUsuario::all();
+    return view('usuarios', compact('usuario', 'usuarios'));
+})->name('usuarios');
+
+// Rota para salvar usuário (apenas admin)
+Route::post('/usuario/store', function (\Illuminate\Http\Request $request) {
+    if (!session()->has('user_id')) {
+        return redirect()->route('login');
+    }
+    $usuario = App\Models\modelUsuario::find(session('user_id'));
+    if (!$usuario || !$usuario->is_admin) {
+        abort(403, 'Acesso não autorizado');
+    }
+    $validated = $request->validate([
+        'nome' => 'required|max:255',
+        'cpf' => 'required|max:14|unique:usuarios,cpf',
+        'senha' => 'required|max:255',
+        'is_admin' => 'required|in:0,1',
+    ]);
+    App\Models\modelUsuario::create([
+        'nome' => $validated['nome'],
+        'cpf' => $validated['cpf'],
+        'senha' => \Illuminate\Support\Facades\Hash::make($validated['senha']),
+        'is_admin' => $validated['is_admin'],
+        'ativo' => true,
+    ]);
+    return redirect()->route('usuarios')->with('success', 'Usuário criado com sucesso!');
+})->name('usuario.store');
 
 Route::post('/produtos/{id}', [ProdutoController::class, 'update'])->name('produtos.update');
 
