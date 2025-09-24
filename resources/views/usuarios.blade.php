@@ -63,13 +63,14 @@
             <form method="POST" id="formEditarUsuario">
                 @csrf
                 <input type="hidden" name="id" id="editId">
-                <input type="text" name="nome" id="editNome" placeholder="Nome" maxlength="255" required style="width:100%;padding:0.7em;margin-bottom:1em;border:1px solid #cfd8dc;border-radius:6px;font-size:1em;background:#f7f9fa;">
-                <input type="text" name="cpf" id="editCpf" placeholder="CPF" maxlength="14" required style="width:100%;padding:0.7em;margin-bottom:1em;border:1px solid #cfd8dc;border-radius:6px;font-size:1em;background:#f7f9fa;">
-                <select name="is_admin" id="editIsAdmin" required style="width:100%;padding:0.7em;margin-bottom:1em;border:1px solid #cfd8dc;border-radius:6px;font-size:1em;background:#f7f9fa;">
+                <input type="text" name="nome" id="editNome" placeholder="Nome" maxlength="255" required class="input-editar-usuario">
+                <input type="text" name="cpf" id="editCpf" placeholder="CPF" maxlength="14" required class="input-editar-usuario">
+                <input type="password" name="senha" id="editSenha" placeholder="Nova Senha" maxlength="255" class="input-editar-usuario">
+                <select name="is_admin" id="editIsAdmin" required class="input-editar-usuario">
                     <option value="0">Usuário comum</option>
                     <option value="1">Administrador</option>
                 </select>
-                <button type="submit" class="btn-salvar-editar" style="width:100%;padding:0.8em;background:#3c97c1;color:#fff;border:none;border-radius:6px;font-size:1.1em;font-weight:600;cursor:pointer;margin-top:0.5em;transition:background 0.2s;">Salvar Alterações</button>
+                <button type="submit" class="btn-salvar-editar">Salvar Alterações</button>
             </form>
             <div id="editarUsuarioMsg" class="novo-usuario-msg"></div>
         </div>
@@ -113,6 +114,7 @@
             const id = document.getElementById('editId').value;
             const nome = document.getElementById('editNome').value;
             const cpf = document.getElementById('editCpf').value;
+            const senha = document.getElementById('editSenha').value;
             const is_admin = document.getElementById('editIsAdmin').value;
             const msg = document.getElementById('editarUsuarioMsg');
             msg.innerHTML = '';
@@ -122,7 +124,7 @@
                     'X-CSRF-TOKEN': '{{ csrf_token() }}',
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ nome, cpf, is_admin })
+                body: JSON.stringify({ nome, cpf, senha, is_admin })
             }).then(async resp => {
                 if (resp.ok) {
                     window.location.reload();

@@ -107,8 +107,8 @@
                         <td>R$ {{ number_format($produto->preco_produto, 2, ',', '.') }}</td>
                         <td>
                             @if(isset($usuario) && $usuario->is_admin)
-                                <button title="Editar" class="btn-editar-produto"><i class="fa-solid fa-pen"></i></button>
-                                <button title="Excluir" class="btn-excluir-produto"><i class="fa-solid fa-trash"></i></button>
+                                <button type="button" class="btn-acao btn-editar" title="Editar Produto"><i class="fa-solid fa-pen-to-square"></i></button>
+                                <button type="button" class="btn-acao btn-excluir" title="Excluir Produto"><i class="fa-solid fa-trash"></i></button>
                             @endif
                         </td>
                     </tr>

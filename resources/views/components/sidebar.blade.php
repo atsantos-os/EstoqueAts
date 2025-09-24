@@ -209,6 +209,13 @@
                 </span>
                 <span>Usuários</span>
             </a></li>
+            <li><a href="{{ route('fornecedores') }}" class="{{ Request::is('fornecedores') ? 'active' : '' }}">
+                <span style="width:25px;display:inline-block;margin-right:15px;">
+                    <!-- SVG moderno: caminhão/fornecedor -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v2H2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8h-2zm-2 0H6V6h12v2zm2 10H4V10h16v8zm-2-4a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/></svg>
+                </span>
+                <span>Fornecedores</span>
+            </a></li>
             @endif
         </ul>
     </nav>

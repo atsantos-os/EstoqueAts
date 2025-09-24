@@ -56,16 +56,36 @@
     border-radius: 8px;
     border: 1px solid #b0c4de;
 }
-.btn-editar-produto {
-    background: none;
+.btn-acao {
+    background: #f7f9fa;
+    color: #3c97c1;
     border: none;
-    color: #2678a3;
+    border-radius: 6px;
+    font-size: 1.1em;
+    padding: 0.5em 0.7em;
+    margin: 0 2px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
 }
-.btn-excluir-produto {
-    background: none;
-    border: none;
-    color: #e74c3c;
-    margin-left: 8px;
+.btn-acao:hover:not(:disabled) {
+    background: #3c97c1;
+    color: #fff;
+}
+.btn-editar {
+    background: #e3f2fd;
+    color: #1976d2;
+}
+.btn-editar:hover {
+    background: #1976d2;
+    color: #fff;
+}
+.btn-excluir {
+    background: #ffeaea;
+    color: #d32f2f;
+}
+.btn-excluir:hover {
+    background: #d32f2f;
+    color: #fff;
 }
 .novo-produto-modal-content {
     max-width: 420px;

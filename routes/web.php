@@ -1,4 +1,5 @@
 
+
 <?php
 
 
@@ -7,6 +8,68 @@ use App\Models\modelUsuario;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\MovimentacaoController;
 use App\Http\Controllers\RelatorioController;
+
+// ROTAS DE FORNECEDORES (baseadas nas de usuários)
+use App\Models\Fornecedor;
+
+// Listar fornecedores (apenas admin)
+Route::get('/fornecedores', function () {
+    if (!session()->has('user_id')) {
+        return redirect()->route('login');
+    }
+    $usuario = App\Models\modelUsuario::find(session('user_id'));
+    if (!$usuario || !$usuario->is_admin) {
+        abort(403, 'Acesso não autorizado');
+    }
+    $fornecedores = Fornecedor::all();
+    $categorias = App\Models\Categoria::all();
+    return view('fornecedores', compact('usuario', 'fornecedores', 'categorias'));
+})->name('fornecedores');
+
+// Cadastrar fornecedor (apenas admin)
+Route::post('/fornecedor/store', function (\Illuminate\Http\Request $request) {
+    if (!session()->has('user_id')) {
+        return redirect()->route('login');
+    }
+    $usuario = App\Models\modelUsuario::find(session('user_id'));
+    if (!$usuario || !$usuario->is_admin) {
+        abort(403, 'Acesso não autorizado');
+    }
+    $validated = $request->validate([
+        'nome_fantasia' => 'required|max:255|unique:fornecedores,nome_fantasia',
+        'cnpj' => 'nullable|max:20|unique:fornecedores,cnpj',
+        'razao_social' => 'nullable|max:255',
+        'email' => 'nullable|max:100',
+        'telefone' => 'nullable|max:20',
+        'categoria_fornecedor' => 'nullable|max:100',
+        'responsavel' => 'nullable|max:100',
+    ]);
+    Fornecedor::create($validated);
+    return redirect()->route('fornecedores')->with('success', 'Fornecedor criado com sucesso!');
+})->name('fornecedor.store');
+
+// Editar fornecedor (apenas admin)
+Route::post('/fornecedor/editar/{id_fornecedor}', function (\Illuminate\Http\Request $request, $id_fornecedor) {
+    if (!session()->has('user_id')) {
+        return redirect()->route('login');
+    }
+    $usuario = App\Models\modelUsuario::find(session('user_id'));
+    if (!$usuario || !$usuario->is_admin) {
+        abort(403, 'Acesso não autorizado');
+    }
+    $fornecedor = Fornecedor::findOrFail($id_fornecedor);
+    $validated = $request->validate([
+        'nome_fantasia' => 'required|max:255|unique:fornecedores,nome_fantasia,' . $id_fornecedor . ',id_fornecedor',
+        'cnpj' => 'nullable|max:20|unique:fornecedores,cnpj,' . $id_fornecedor . ',id_fornecedor',
+        'razao_social' => 'nullable|max:255',
+        'email' => 'nullable|max:100',
+        'telefone' => 'nullable|max:20',
+        'categoria_fornecedor' => 'nullable|max:100',
+        'responsavel' => 'nullable|max:100',
+    ]);
+    $fornecedor->update($validated);
+    return response()->json(['success' => true]);
+})->name('fornecedor.editar');
 
 // Inativar usuário (apenas admin)
 // Alternar ativação/inativação do usuário (apenas admin)
@@ -39,10 +102,14 @@ Route::post('/usuario/editar/{id}', function (\Illuminate\Http\Request $request,
         'nome' => 'required|max:255',
         'cpf' => 'required|max:14|unique:usuarios,cpf,' . $id,
         'is_admin' => 'required|in:0,1',
+        'senha' => 'nullable|max:255',
     ]);
     $user->nome = $validated['nome'];
     $user->cpf = $validated['cpf'];
     $user->is_admin = $validated['is_admin'];
+    if (!empty($validated['senha'])) {
+        $user->senha = \Illuminate\Support\Facades\Hash::make($validated['senha']);
+    }
     $user->save();
     return redirect()->route('usuarios')->with('success', 'Informações do usuário atualizadas!');
 })->name('usuario.editar');

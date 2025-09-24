@@ -1,4 +1,5 @@
-#formEditarUsuario .input-editar-usuario {
+/* Fornecedores - usa base de usuarios.css, mas com nomes adaptados */
+#formEditarFornecedor .input-editar-usuario {
     width: 100%;
     padding: 0.7em;
     margin-bottom: 1em;
@@ -8,11 +9,11 @@
     background: #f7f9fa;
     transition: border-color 0.2s;
 }
-#formEditarUsuario .input-editar-usuario:focus {
+#formEditarFornecedor .input-editar-usuario:focus {
     border-color: #3c97c1;
     outline: none;
 }
-#formEditarUsuario .btn-salvar-editar {
+#formEditarFornecedor .btn-salvar-editar {
     width: 100%;
     padding: 0.8em;
     background: #3c97c1;
@@ -25,10 +26,9 @@
     margin-top: 0.5em;
     transition: background 0.2s;
 }
-#formEditarUsuario .btn-salvar-editar:hover {
+#formEditarFornecedor .btn-salvar-editar:hover {
     background: #385f86;
 }
-/* Botões de ação na tabela de usuários */
 .btn-acao {
     background: #f7f9fa;
     color: #3c97c1;
@@ -44,11 +44,6 @@
     background: #3c97c1;
     color: #fff;
 }
-.btn-inativar:disabled {
-    background: #eee;
-    color: #aaa;
-    cursor: not-allowed;
-}
 body, html {
     font-family: 'Montserrat', Arial, sans-serif !important;
     background: linear-gradient(135deg,#385f86 0%, #a8c0ff 100%) !important;
@@ -56,8 +51,6 @@ body, html {
     min-height: 100vh;
     color: #222;
 }
-
-/* Padrão containers principais */
 .main-content {
     min-height: 80vh;
     display: flex;
@@ -70,17 +63,15 @@ body, html {
     border-radius: 12px;
     box-shadow: 0 2px 16px rgba(60, 151, 193, 0.12);
     width: 100%;
-    max-width: 700px;
+    max-width: 900px;
 }
 .table-responsive {
     width: 100%;
     overflow-x: auto;
 }
-/* Espaço para header fixo */
 .usuario-main-padded {
     padding-top: 80px;
 }
-/* Removido, agora usa .main-content e .section-container */
 .usuario-header {
     display: flex;
     justify-content: space-between;
@@ -155,7 +146,7 @@ body, html {
     color: #385f86;
     text-align: center;
 }
-#formNovoUsuario input, #formNovoUsuario select {
+#formNovoFornecedor input, #formNovoFornecedor select {
     width: 100%;
     padding: 0.7em;
     margin-bottom: 1em;
@@ -165,11 +156,11 @@ body, html {
     background: #f7f9fa;
     transition: border-color 0.2s;
 }
-#formNovoUsuario input:focus, #formNovoUsuario select:focus {
+#formNovoFornecedor input:focus, #formNovoFornecedor select:focus {
     border-color: #3c97c1;
     outline: none;
 }
-#formNovoUsuario button {
+#formNovoFornecedor button {
     width: 100%;
     padding: 0.8em;
     background: #3c97c1;
@@ -182,7 +173,7 @@ body, html {
     margin-top: 0.5em;
     transition: background 0.2s;
 }
-#formNovoUsuario button:hover {
+#formNovoFornecedor button:hover {
     background: #385f86;
 }
 .novo-usuario-msg {
