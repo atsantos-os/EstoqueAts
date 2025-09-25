@@ -19,9 +19,9 @@ class DatabaseSeeder extends Seeder
            ClienteSeeder::class,
            ProdutoSeeder::class,
            EstoqueSeeder::class,
-            UsuariosSeeder::class,
-           MovimentacaoEstoqueSeeder::class
-          
+           UsuariosSeeder::class,
+           MovimentacaoEstoqueSeeder::class,
+           MaquinarioSeeder::class,
        ]);
    }
 

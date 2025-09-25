@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Maquinario extends Model
 {
+    use HasFactory;
     protected $table = 'maquinarios';
     protected $primaryKey = 'id_maquinario';
     public $timestamps = true;
