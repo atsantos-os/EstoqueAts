@@ -150,7 +150,7 @@
                     <ellipse cx="21" cy="31.5" rx="11" ry="6.5" fill="#3c97c1"/>
                 </svg>
             </div>
-            <span class="user-name">{{ $usuario->nome }}</span>
+            <span class="user-name">{{ $usuario->nome ?? 'Usuário' }}</span>
         </div>
     </div>
 </header>

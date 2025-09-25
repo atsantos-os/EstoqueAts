@@ -1,3 +1,37 @@
+.main-content {
+    /* ...outras propriedades já existentes... */
+    margin-left: 250px; /* Igual dashboard.css, centraliza considerando sidebar */
+    box-sizing: border-box;
+    flex: 1;
+    margin-top: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2.5rem;
+    background: #eff3fa;
+    transition: all 0.3s ease;
+    min-height: 80vh;
+}
+
+.main-content > .container,
+.main-content > .section-container {
+    margin: 0 auto;
+}
+
+.container {
+    background: #fff;
+    padding: 2.5rem 2rem;
+    border-radius: 20px;
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 1200px;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+.container:hover {
+    transform: translateY(-2px);
+}
 /* Fornecedores - usa base de usuarios.css, mas com nomes adaptados */
 #formEditarFornecedor .input-editar-usuario {
     width: 100%;
@@ -81,6 +115,7 @@ body, html {
 .usuario-header h2 {
     color: #385f86;
     margin: 0;
+    font-size: 2.2rem;
 }
 .btn-novo-usuario {
     background: #3c97c1;

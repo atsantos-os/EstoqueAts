@@ -1,3 +1,12 @@
+.main-content {
+    /* ...outras propriedades já existentes... */
+    margin-left: 250px; /* Igual dashboard.css, centraliza considerando sidebar */
+    box-sizing: border-box;
+}
+.main-content > .container,
+.main-content > .section-container {
+    margin: 0 auto;
+}
 #formEditarUsuario .input-editar-usuario {
     width: 100%;
     padding: 0.7em;
@@ -59,6 +68,31 @@ body, html {
 
 /* Padrão containers principais */
 .main-content {
+    flex: 1;
+    margin-top: 70px; /* valor fixo, pois variáveis não estão no usuarios.css */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2.5rem;
+    background: #eff3fa;
+    transition: all 0.3s ease;
+}
+
+.container {
+    background: #fff;
+    padding: 2.5rem 2rem;
+    border-radius: 20px;
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 1200px;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+.container:hover {
+    transform: translateY(-2px);
+}
+.main-content {
     min-height: 80vh;
     display: flex;
     justify-content: center;
@@ -90,6 +124,7 @@ body, html {
 .usuario-header h2 {
     color: #385f86;
     margin: 0;
+    font-size: 2.2rem;
 }
 .btn-novo-usuario {
     background: #3c97c1;

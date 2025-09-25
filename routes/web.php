@@ -1,16 +1,169 @@
 
 
+
 <?php
 
 
 use App\Http\Controllers\ControllerUsuario;
 use App\Models\modelUsuario;
+use App\Models\Categoria;
+use App\Models\Fornecedor;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\MovimentacaoController;
 use App\Http\Controllers\RelatorioController;
+use App\Http\Controllers\MaquinarioController;
 
 // ROTAS DE FORNECEDORES (baseadas nas de usuários)
-use App\Models\Fornecedor;
+
+
+use App\Models\Maquinario;
+
+// Cadastrar maquinário (apenas admin)
+Route::post('/maquinarios/store', function (\Illuminate\Http\Request $request) {
+    if (!session()->has('user_id')) {
+        return redirect()->route('login');
+    }
+    $usuario = App\Models\modelUsuario::find(session('user_id'));
+    if (!$usuario || !$usuario->is_admin) {
+        abort(403, 'Acesso não autorizado');
+    }
+    $validated = $request->validate([
+        'maquina' => 'required|max:100',
+        'marca' => 'required|max:50',
+        'modelo' => 'required|max:50',
+        'id_fornecedor' => 'nullable|exists:fornecedores,id_fornecedor',
+        'id_cliente' => 'nullable|exists:clientes,id_cliente',
+        'supervisor' => 'required',
+        'cor' => 'nullable|max:30',
+        'patrimonio' => 'required|max:50|unique:maquinarios,patrimonio',
+        'valor' => 'nullable|numeric',
+        'contrato' => 'nullable|max:50',
+        'local' => 'nullable|max:100',
+        'volts' => 'nullable|max:20',
+        'conferencia' => 'nullable|max:100',
+        'observacao' => 'nullable',
+        'data_saida' => 'nullable|date',
+    ]);
+    App\Models\Maquinario::create($validated);
+    return redirect()->route('maquinarios.index')->with('success', 'Maquinário cadastrado com sucesso!');
+})->name('maquinarios.store');
+
+// Editar maquinário (apenas admin)
+Route::post('/maquinarios/editar/{id}', function (\Illuminate\Http\Request $request, $id) {
+    if (!session()->has('user_id')) {
+        return redirect()->route('login');
+    }
+    $usuario = App\Models\modelUsuario::find(session('user_id'));
+    if (!$usuario || !$usuario->is_admin) {
+        abort(403, 'Acesso não autorizado');
+    }
+    $maquinario = App\Models\Maquinario::findOrFail($id);
+    $validated = $request->validate([
+        'maquina' => 'required|max:100',
+        'marca' => 'required|max:50',
+        'modelo' => 'required|max:50',
+        'id_fornecedor' => 'nullable|exists:fornecedores,id_fornecedor',
+        'id_cliente' => 'nullable|exists:clientes,id_cliente',
+        'supervisor' => 'required',
+        'cor' => 'nullable|max:30',
+        'patrimonio' => 'required|max:50|unique:maquinarios,patrimonio,' . $id . ',id_maquinario',
+        'valor' => 'nullable|numeric',
+        'contrato' => 'nullable|max:50',
+        'local' => 'nullable|max:100',
+        'volts' => 'nullable|max:20',
+        'conferencia' => 'nullable|max:100',
+        'observacao' => 'nullable',
+        'data_saida' => 'nullable|date',
+    ]);
+    $maquinario->update($validated);
+    return response()->json(['success' => true]);
+})->name('maquinarios.editar');
+
+// Excluir maquinário (apenas admin)
+Route::delete('/maquinarios/destroy/{id}', function ($id) {
+    if (!session()->has('user_id')) {
+        return redirect()->route('login');
+    }
+    $usuario = App\Models\modelUsuario::find(session('user_id'));
+    if (!$usuario || !$usuario->is_admin) {
+        abort(403, 'Acesso não autorizado');
+    }
+    $maquinario = App\Models\Maquinario::findOrFail($id);
+    $maquinario->delete();
+    return redirect()->route('maquinarios.index')->with('success', 'Maquinário excluído com sucesso!');
+})->name('maquinarios.destroy');
+
+
+// ROTA DE MAQUINARIOS (apenas admin)
+Route::get('/maquinarios', function () {
+    if (!session()->has('user_id')) {
+        return redirect()->route('login');
+    }
+    $usuario = App\Models\modelUsuario::find(session('user_id'));
+    if (!$usuario || !$usuario->is_admin) {
+        abort(403, 'Acesso não autorizado');
+    }
+    $maquinarios = Maquinario::with(['fornecedor', 'cliente'])->get();
+    return view('maquinarios', compact('usuario', 'maquinarios'));
+})->name('maquinarios.index');
+// ROTAS DE CATEGORIAS (apenas admin)
+
+Route::get('/categorias', function () {
+    if (!session()->has('user_id')) {
+        return redirect()->route('login');
+    }
+    $usuario = App\Models\modelUsuario::find(session('user_id'));
+    if (!$usuario || !$usuario->is_admin) {
+        abort(403, 'Acesso não autorizado');
+    }
+    $categorias = Categoria::all();
+    return view('categorias', compact('usuario', 'categorias'));
+})->name('categorias');
+
+Route::post('/categoria/store', function (\Illuminate\Http\Request $request) {
+    if (!session()->has('user_id')) {
+        return redirect()->route('login');
+    }
+    $usuario = App\Models\modelUsuario::find(session('user_id'));
+    if (!$usuario || !$usuario->is_admin) {
+        abort(403, 'Acesso não autorizado');
+    }
+    $validated = $request->validate([
+        'nome_categoria' => 'required|max:255|unique:categorias,nome_categoria',
+    ]);
+    Categoria::create($validated);
+    return redirect()->route('categorias')->with('success', 'Categoria criada com sucesso!');
+})->name('categoria.store');
+
+Route::post('/categoria/editar/{id}', function (\Illuminate\Http\Request $request, $id) {
+    if (!session()->has('user_id')) {
+        return redirect()->route('login');
+    }
+    $usuario = App\Models\modelUsuario::find(session('user_id'));
+    if (!$usuario || !$usuario->is_admin) {
+        abort(403, 'Acesso não autorizado');
+    }
+    $categoria = Categoria::findOrFail($id);
+    $validated = $request->validate([
+        'nome_categoria' => 'required|max:255|unique:categorias,nome_categoria,' . $id . ',id_categoria',
+    ]);
+    $categoria->update($validated);
+    return response()->json(['success' => true]);
+})->name('categoria.editar');
+
+Route::delete('/categoria/destroy/{id}', function ($id) {
+    if (!session()->has('user_id')) {
+        return redirect()->route('login');
+    }
+    $usuario = App\Models\modelUsuario::find(session('user_id'));
+    if (!$usuario || !$usuario->is_admin) {
+        abort(403, 'Acesso não autorizado');
+    }
+    $categoria = Categoria::findOrFail($id);
+    $categoria->delete();
+    return redirect()->route('categorias')->with('success', 'Categoria excluída com sucesso!');
+})->name('categoria.destroy');
+
 
 // Listar fornecedores (apenas admin)
 Route::get('/fornecedores', function () {

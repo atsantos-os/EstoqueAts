@@ -1,0 +1,210 @@
+body, html {
+    font-family: 'Montserrat', Arial, sans-serif;
+    background: #fff;
+    margin: 0;
+    min-height: 100vh;
+    color: #222;
+}
+
+.main-content {
+    margin-left: 250px;
+    box-sizing: border-box;
+    flex: 1;
+    margin-top: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2.5rem 1rem;
+    background: #eff3fa;
+    min-height: 80vh;
+}
+
+.container {
+    background: #fff;
+    padding: 2.5rem 2rem;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(44, 62, 80, 0.13);
+    width: 100%;
+    max-width: 1200px;
+    text-align: center;
+    transition: box-shadow 0.2s;
+}
+
+.maquinario-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2em;
+}
+.maquinario-header h2 {
+    color: #385f86;
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+}
+.btn-novo-maquinario {
+    background: #3c97c1;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
+    font-weight: 600;
+    padding: 0.7em 1.2em;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+.btn-novo-maquinario:hover {
+    background: #385f86;
+}
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+.maquinario-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1em;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.maquinario-table th, .maquinario-table td {
+    padding: 0.8em 0.5em;
+    border-bottom: 1px solid #e0e0e0;
+    text-align: left;
+}
+.maquinario-table th {
+    background: #f7f9fa;
+    color: #385f86;
+    font-weight: 600;
+    font-size: 1.05em;
+}
+.maquinario-table tr:last-child td {
+    border-bottom: none;
+}
+.btn-acao {
+    background: #f7f9fa;
+    color: #3c97c1;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1em;
+    padding: 0.5em 0.7em;
+    margin: 0 2px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+}
+.btn-acao:hover:not(:disabled) {
+    background: #3c97c1;
+    color: #fff;
+}
+.btn-inativar:disabled {
+    background: #eee;
+    color: #aaa;
+    cursor: not-allowed;
+}
+
+/* MODAIS DE MAQUINÁRIOS */
+.maquinario-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(44, 62, 80, 0.25);
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s;
+}
+.maquinario-modal[style*="display: flex"] {
+    display: flex !important;
+}
+.modal-content {
+    background: #fff;
+    padding: 2.5rem 2.5rem 2rem 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(44, 62, 80, 0.18);
+    min-width: 340px;
+    max-width: 95vw;
+    position: relative;
+    text-align: left;
+    animation: modalIn 0.2s;
+}
+@keyframes modalIn {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+.close-modal {
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    font-size: 2rem;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.2s;
+    z-index: 10;
+}
+.close-modal:hover {
+    color: #3c97c1;
+}
+
+/* FORMULÁRIOS NOS MODAIS */
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1em;
+    margin-top: 1em;
+}
+.modal-content input[type="text"],
+.modal-content input[type="number"],
+.modal-content input[type="date"],
+.modal-content textarea,
+.modal-content select {
+    padding: 0.7em 1em;
+    border: 1.5px solid #c7d0e0;
+    border-radius: 7px;
+    font-size: 1em;
+    font-family: inherit;
+    background: #f7f9fa;
+    color: #222;
+    outline: none;
+    transition: border 0.2s;
+}
+.modal-content input:focus,
+.modal-content textarea:focus,
+.modal-content select:focus {
+    border-color: #3c97c1;
+}
+.modal-content button[type="submit"],
+.btn-salvar-editar {
+    background: #3c97c1;
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    font-size: 1.1em;
+    font-weight: 600;
+    padding: 0.8em 1.2em;
+    cursor: pointer;
+    margin-top: 0.5em;
+    transition: background 0.2s;
+}
+.modal-content button[type="submit"]:hover,
+.btn-salvar-editar:hover {
+    background: #385f86;
+}
+
+/* Mensagem de erro/sucesso nos modais */
+.novo-maquinario-msg {
+    margin-top: 1em;
+    color: #e74c3c;
+    font-weight: 500;
+    font-size: 1em;
+    text-align: center;
+}
