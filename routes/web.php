@@ -1,6 +1,4 @@
 
-
-
 <?php
 
 
@@ -12,11 +10,94 @@ use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\MovimentacaoController;
 use App\Http\Controllers\RelatorioController;
 use App\Http\Controllers\MaquinarioController;
+use App\Http\Controllers\ClienteController;
+
+
 
 // ROTAS DE FORNECEDORES (baseadas nas de usuários)
 
 
 use App\Models\Maquinario;
+
+// Excluir fornecedor (apenas admin)
+Route::delete('/fornecedor/destroy/{id_fornecedor}', function ($id_fornecedor) {
+    if (!session()->has('user_id')) {
+        return redirect()->route('login');
+    }
+    $usuario = App\Models\modelUsuario::find(session('user_id'));
+    if (!$usuario || !$usuario->is_admin) {
+        abort(403, 'Acesso não autorizado');
+    }
+    $fornecedor = Fornecedor::findOrFail($id_fornecedor);
+    $fornecedor->delete();
+    return redirect()->route('fornecedores')->with('success', 'Fornecedor excluído com sucesso!');
+})->name('fornecedor.destroy');
+
+
+// Rotas de Clientes (apenas admin)
+Route::get('/clientes', function () {
+    if (!session()->has('user_id')) {
+        return redirect()->route('login');
+    }
+    $usuario = App\Models\modelUsuario::find(session('user_id'));
+    if (!$usuario || !$usuario->is_admin) {
+        abort(403, 'Acesso não autorizado');
+    }
+    $clientes = App\Models\Cliente::all();
+    return view('clientes', compact('usuario', 'clientes'));
+})->name('clientes');
+
+Route::post('/clientes/store', function (\Illuminate\Http\Request $request) {
+    if (!session()->has('user_id')) {
+        return redirect()->route('login');
+    }
+    $usuario = App\Models\modelUsuario::find(session('user_id'));
+    if (!$usuario || !$usuario->is_admin) {
+        abort(403, 'Acesso não autorizado');
+    }
+    $validated = $request->validate([
+        'cnpj' => 'required|string|max:18|unique:clientes,cnpj',
+        'razao_social' => 'required|string|max:255',
+        'nome_fantasia' => 'nullable|string|max:255',
+        'contrato' => 'nullable|string|max:100',
+        'supervisor' => 'nullable|string|max:100',
+    ]);
+    App\Models\Cliente::create($validated);
+    return redirect()->route('clientes')->with('success', 'Cliente cadastrado com sucesso!');
+})->name('clientes.store');
+
+Route::post('/clientes/editar/{id}', function (\Illuminate\Http\Request $request, $id) {
+    if (!session()->has('user_id')) {
+        return redirect()->route('login');
+    }
+    $usuario = App\Models\modelUsuario::find(session('user_id'));
+    if (!$usuario || !$usuario->is_admin) {
+        abort(403, 'Acesso não autorizado');
+    }
+    $cliente = App\Models\Cliente::findOrFail($id);
+    $validated = $request->validate([
+        'cnpj' => 'required|string|max:18|unique:clientes,cnpj,' . $id . ',id_cliente',
+        'razao_social' => 'required|string|max:255',
+        'nome_fantasia' => 'nullable|string|max:255',
+        'contrato' => 'nullable|string|max:100',
+        'supervisor' => 'nullable|string|max:100',
+    ]);
+    $cliente->update($validated);
+    return redirect()->route('clientes')->with('success', 'Cliente atualizado com sucesso!');
+})->name('clientes.update');
+
+Route::delete('/clientes/destroy/{id}', function ($id) {
+    if (!session()->has('user_id')) {
+        return redirect()->route('login');
+    }
+    $usuario = App\Models\modelUsuario::find(session('user_id'));
+    if (!$usuario || !$usuario->is_admin) {
+        abort(403, 'Acesso não autorizado');
+    }
+    $cliente = App\Models\Cliente::findOrFail($id);
+    $cliente->delete();
+    return redirect()->route('clientes')->with('success', 'Cliente excluído com sucesso!');
+})->name('clientes.destroy');
 
 // Cadastrar maquinário (apenas admin)
 Route::post('/maquinarios/store', function (\Illuminate\Http\Request $request) {

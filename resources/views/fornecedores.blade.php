@@ -47,6 +47,13 @@
                                 <button type="button" class="btn-acao btn-editar" title="Editar Fornecedor" onclick="abrirModalEditarFornecedor({{ $f->id_fornecedor }}, '{{ addslashes($f->nome_fantasia) }}', '{{ $f->cnpj }}', '{{ addslashes($f->razao_social) }}', '{{ addslashes($f->email) }}', '{{ addslashes($f->telefone) }}', '{{ addslashes($f->categoria_fornecedor) }}', '{{ addslashes($f->responsavel) }}')">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </button>
+                                <form method="POST" action="{{ route('fornecedor.destroy', $f->id_fornecedor) }}" style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn-acao btn-excluir" title="Excluir Fornecedor" onclick="return confirm('Tem certeza que deseja excluir este fornecedor?')">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                         @endforeach
