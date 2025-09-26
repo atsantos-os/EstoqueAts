@@ -11,10 +11,9 @@
     .sidebar {
         width: 260px;
         position: fixed;
-        /* AJUSTE: Posição inicial e altura calculada para respeitar um header de 60px */
-        top: 60px; 
+    /* Sidebar ajustada para não reservar espaço de header */
         left: 0;
-        height: calc(100vh - 60px);
+        height: 100vh;
 
         /* AJUSTE: Nova cor de fundo */
         background-color: #235596; 

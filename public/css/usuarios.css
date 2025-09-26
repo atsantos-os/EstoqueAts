@@ -1,8 +1,4 @@
-.main-content {
-    /* ...outras propriedades já existentes... */
-    margin-left: 250px; /* Igual dashboard.css, centraliza considerando sidebar */
-    box-sizing: border-box;
-}
+/* ...existing code... */
 .main-content > .container,
 .main-content > .section-container {
     margin: 0 auto;
@@ -69,7 +65,7 @@ body, html {
 /* Padrão containers principais */
 .main-content {
     flex: 1;
-    margin-top: 70px; /* valor fixo, pois variáveis não estão no usuarios.css */
+    /* Removido margin-top pois não há mais header */
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -111,9 +107,7 @@ body, html {
     overflow-x: auto;
 }
 /* Espaço para header fixo */
-.usuario-main-padded {
-    padding-top: 80px;
-}
+/* .usuario-main-padded removido pois não há mais header fixo */
 /* Removido, agora usa .main-content e .section-container */
 .usuario-header {
     display: flex;

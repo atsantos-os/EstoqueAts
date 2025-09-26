@@ -48,11 +48,11 @@ body, html {
     color: #222;
 }
 
-.main-content {
+ .main-content {
     margin-left: 250px;
     box-sizing: border-box;
     flex: 1;
-    margin-top: 70px;
+    /* Removido margin-top pois não há mais header */
     display: flex;
     justify-content: center;
     align-items: flex-start;

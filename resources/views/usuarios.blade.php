@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    @include('components.header')
+    
     @include('components.sidebar')
     <main class="main-content usuario-main-padded">
         <section class="section-container usuario-container">

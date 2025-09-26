@@ -62,7 +62,7 @@
             </div>
         </div>
     </div>
-    @include('components.header')
+    
     @include('components.sidebar')
     <div class="produtos-main">
         <div class="produtos-container">

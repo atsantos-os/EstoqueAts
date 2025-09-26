@@ -9,7 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    @include('components.header')
+    
     @include('components.sidebar')
     <div class="relatorio-main">
         <div class="relatorio-container">

@@ -2,11 +2,10 @@
 body, .cliente-main-padded, .cliente-container, .cliente-header, .btn-novo-cliente, .cliente-table, .cliente-table th, .cliente-table td, .btn-acao, .cliente-modal, .modal-content, .close-modal, .btn-salvar-editar, input[type="text"], input[type="password"] {
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
 }
-.cliente-main-padded {
-    padding-left: 270px;
-    padding-top: 70px;
-    background: #f7fafd;
-    min-height: 100vh;
+ .cliente-main-padded {
+     padding-left: 270px;
+     background: #f7fafd;
+     min-height: 100vh;
 }
 .cliente-container {
     background: #fff;

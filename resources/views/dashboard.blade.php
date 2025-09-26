@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
 </head>
 <body>
-    @include('components.header')
+
     @include('components.sidebar')
 
     <div class="main-content">

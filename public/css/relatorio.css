@@ -9,16 +9,15 @@ body, .relatorio-main, .relatorio-container, .relatorio-header, .relatorio-table
 }
 /* Relatório - Visual moderno inspirado no dashboard */
 
-.relatorio-main {
-    min-height: 100vh;
-    background: #f4f8fb;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    padding-top: 80px;
-    padding-left: 260px; /* largura da sidebar fixa */
-    width: 100vw;
-    box-sizing: border-box;
+ .relatorio-main {
+     min-height: 100vh;
+     background: #f4f8fb;
+     display: flex;
+     align-items: flex-start;
+     justify-content: center;
+     padding-left: 260px; /* largura da sidebar fixa */
+     width: 100vw;
+     box-sizing: border-box;
 }
 .relatorio-container {
     background: #fff;
@@ -134,8 +133,8 @@ body, .relatorio-main, .relatorio-container, .relatorio-header, .relatorio-table
 .relatorio-table tbody tr:hover {
     background: #f0f6fa;
 }
-.relatorio-grafico {
-    margin-top: 2rem;
+ .relatorio-grafico {
+    /* Removido margin-top para não criar espaço extra sem header */
     background: #fafdff;
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(44,62,80,0.07);
