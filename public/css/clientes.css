@@ -1,4 +1,118 @@
 /* CSS exclusivo para a página de clientes */
+/* PADRÃO GLOBAL DE BOTÕES */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    padding: 0.7em 1.5em;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px #2678a31a;
+    background: #2678a3;
+    color: #fff;
+}
+.btn:hover, .btn:focus {
+    background: #235596;
+    color: #fff;
+}
+.btn-primary {
+    background: linear-gradient(90deg,#2678a3,#3c97c1);
+}
+.btn-primary:hover, .btn-primary:focus {
+    background: #235596;
+}
+.btn-edit {
+    background: #e3f2fd;
+    color: #1976d2;
+}
+.btn-edit:hover, .btn-edit:focus {
+    background: #1976d2;
+    color: #fff;
+}
+.btn-delete {
+    background: #ffeaea;
+    color: #d32f2f;
+}
+.btn-delete:hover, .btn-delete:focus {
+    background: #d32f2f;
+    color: #fff;
+}
+.btn-save {
+    background: linear-gradient(90deg,#27ae60,#2ecc71);
+}
+.btn-save:hover, .btn-save:focus {
+    background: #219150;
+}
+.btn-cancel {
+    background: #b0b0b0;
+    color: #fff;
+}
+.btn-cancel:hover, .btn-cancel:focus {
+    background: #888;
+}
+/* PADRÃO GLOBAL DE BOTÕES */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    padding: 0.7em 1.5em;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px #2678a31a;
+    background: #2678a3;
+    color: #fff;
+}
+.btn:hover, .btn:focus {
+    background: #235596;
+    color: #fff;
+}
+.btn-primary {
+    background: linear-gradient(90deg,#2678a3,#3c97c1);
+}
+.btn-primary:hover, .btn-primary:focus {
+    background: #235596;
+}
+.btn-edit {
+    background: #e3f2fd;
+    color: #1976d2;
+}
+.btn-edit:hover, .btn-edit:focus {
+    background: #1976d2;
+    color: #fff;
+}
+.btn-delete {
+    background: #ffeaea;
+    color: #d32f2f;
+}
+.btn-delete:hover, .btn-delete:focus {
+    background: #d32f2f;
+    color: #fff;
+}
+.btn-save {
+    background: linear-gradient(90deg,#27ae60,#2ecc71);
+}
+.btn-save:hover, .btn-save:focus {
+    background: #219150;
+}
+.btn-cancel {
+    background: #b0b0b0;
+    color: #fff;
+}
+.btn-cancel:hover, .btn-cancel:focus {
+    background: #888;
+}
 body, .cliente-main-padded, .cliente-container, .cliente-header, .btn-novo-cliente, .cliente-table, .cliente-table th, .cliente-table td, .btn-acao, .cliente-modal, .modal-content, .close-modal, .btn-salvar-editar, input[type="text"], input[type="password"] {
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
 }
@@ -12,7 +126,7 @@ body, .cliente-main-padded, .cliente-container, .cliente-header, .btn-novo-clien
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(35,85,150,0.08);
     padding: 32px 24px;
-    margin: 32px auto;
+    margin: auto;
     max-width: 1100px;
 }
 .cliente-header {
@@ -45,7 +159,7 @@ body, .cliente-main-padded, .cliente-container, .cliente-header, .btn-novo-clien
 .cliente-table th, .cliente-table td {
     padding: 10px 12px;
     border-bottom: 1px solid #e3eaf3;
-    text-align: left;
+    text-align: center;
 }
 .cliente-table th {
     background: #f1f6fb;
@@ -56,19 +170,24 @@ body, .cliente-main-padded, .cliente-container, .cliente-header, .btn-novo-clien
     background: #f6faff;
 }
 .btn-acao {
-    background: none;
+    /* Use .btn .btn-edit ou .btn-delete para padronizar */
+    background: #e3f2fd;
+    color: #1976d2;
     border: none;
-    cursor: pointer;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    padding: 0.5em 0.7em;
     margin: 0 2px;
-    font-size: 18px;
-    color: #235596;
-    transition: color 0.2s;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
 }
-.btn-acao.btn-editar:hover {
-    color: #2980b9;
+.btn-acao.btn-excluir {
+    background: #ffeaea;
+    color: #d32f2f;
 }
-.btn-acao.btn-excluir:hover {
-    color: #e74c3c;
+.btn-acao.btn-excluir:hover, .btn-acao.btn-excluir:focus {
+    background: #d32f2f;
+    color: #fff;
 }
 .cliente-modal {
     display: none;

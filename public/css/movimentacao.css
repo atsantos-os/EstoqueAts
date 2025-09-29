@@ -1,4 +1,61 @@
 /* Estilos movidos do inline do movimentacao.blade.php */
+/* PADRÃO GLOBAL DE BOTÕES */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    padding: 0.7em 1.5em;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px #2678a31a;
+    background: #2678a3;
+    color: #fff;
+}
+.btn:hover, .btn:focus {
+    background: #235596;
+    color: #fff;
+}
+.btn-primary {
+    background: linear-gradient(90deg,#2678a3,#3c97c1);
+}
+.btn-primary:hover, .btn-primary:focus {
+    background: #235596;
+}
+.btn-edit {
+    background: #e3f2fd;
+    color: #1976d2;
+}
+.btn-edit:hover, .btn-edit:focus {
+    background: #1976d2;
+    color: #fff;
+}
+.btn-delete {
+    background: #ffeaea;
+    color: #d32f2f;
+}
+.btn-delete:hover, .btn-delete:focus {
+    background: #d32f2f;
+    color: #fff;
+}
+.btn-save {
+    background: linear-gradient(90deg,#27ae60,#2ecc71);
+}
+.btn-save:hover, .btn-save:focus {
+    background: #219150;
+}
+.btn-cancel {
+    background: #b0b0b0;
+    color: #fff;
+}
+.btn-cancel:hover, .btn-cancel:focus {
+    background: #888;
+}
 .movimentado-por {
     background: #f3f3f3;
     color: #888;
@@ -180,9 +237,18 @@
     color: #888;
 }
 .mov-table .btn-excluir {
-    background: none;
+    /* Use .btn.btn-delete para padronizar */
+    background: #ffeaea;
+    color: #d32f2f;
     border: none;
-    color: #e74c3c;
-    cursor: pointer;
+    border-radius: 8px;
     font-size: 1.1rem;
+    padding: 0.5em 0.7em;
+    margin: 0 2px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+.mov-table .btn-excluir:hover, .mov-table .btn-excluir:focus {
+    background: #d32f2f;
+    color: #fff;
 }

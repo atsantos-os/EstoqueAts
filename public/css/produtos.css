@@ -1,4 +1,61 @@
 /* Estilos movidos do inline do produtos.blade.php */
+/* PADRÃO GLOBAL DE BOTÕES */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    padding: 0.7em 1.5em;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px #2678a31a;
+    background: #2678a3;
+    color: #fff;
+}
+.btn:hover, .btn:focus {
+    background: #235596;
+    color: #fff;
+}
+.btn-primary {
+    background: linear-gradient(90deg,#2678a3,#3c97c1);
+}
+.btn-primary:hover, .btn-primary:focus {
+    background: #235596;
+}
+.btn-edit {
+    background: #e3f2fd;
+    color: #1976d2;
+}
+.btn-edit:hover, .btn-edit:focus {
+    background: #1976d2;
+    color: #fff;
+}
+.btn-delete {
+    background: #ffeaea;
+    color: #d32f2f;
+}
+.btn-delete:hover, .btn-delete:focus {
+    background: #d32f2f;
+    color: #fff;
+}
+.btn-save {
+    background: linear-gradient(90deg,#27ae60,#2ecc71);
+}
+.btn-save:hover, .btn-save:focus {
+    background: #219150;
+}
+.btn-cancel {
+    background: #b0b0b0;
+    color: #fff;
+}
+.btn-cancel:hover, .btn-cancel:focus {
+    background: #888;
+}
 .visual-produto-modal-content {
     background: #fff;
     border-radius: 20px;
@@ -233,16 +290,19 @@
     box-shadow: 0 2px 8px rgba(44, 62, 80, 0.07);
     min-height: 260px; /* altura mínima ajustada para melhor visual com poucos itens */
     max-height: 60vh;
+    margin-left: auto;
+    margin-right: auto;
 }
 .nova-tabela-produtos th, .nova-tabela-produtos td {
     padding: 1rem 1.2rem;
-    text-align: left;
+    text-align: center;
 }
 .nova-tabela-produtos th {
     background: #eaf4fb;
     color: #235596;
     font-weight: 700;
     border-bottom: 2px solid #dbeaf5;
+    text-align: center;
 }
 .nova-tabela-produtos tr:not(:last-child) td {
     border-bottom: 1px solid #eaf4fb;

@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="{{ asset('css/sidebar-responsive.css') }}">
 <style>
     /* CSS Reset e Configurações de Fonte */
     .sidebar, .sidebar * {
@@ -147,6 +148,9 @@
 </style>
 
 <aside class="sidebar">
+    <button class="sidebar-toggle" id="sidebarToggle" style="display:none;">
+        <i class="fa fa-bars"></i>
+    </button>
     <div class="sidebar-header">
         <a href="{{ url('dashboard') }}" class="brand-link">
             <span class="logo-icon" style="width:28px;display:inline-block;margin-right:15px;">
@@ -163,7 +167,7 @@
 
     <div class="divider"></div>
 
-    <nav class="sidebar-nav">
+    <nav class="sidebar-nav" id="sidebarNav">
         <ul>
             {{-- Painel sempre em primeiro, todos os outros (inclusive admin) em ordem alfabética única --}}
             <li><a href="{{ url('dashboard') }}" class="{{ Request::is('dashboard') ? 'active' : '' }}">
@@ -278,6 +282,25 @@ function toggleEstoque() {
         nome.innerText = 'Estoque ATS';
     }
 }
+// Sidebar mobile toggle
+document.addEventListener('DOMContentLoaded', function() {
+    var sidebarToggle = document.getElementById('sidebarToggle');
+    var sidebarNav = document.getElementById('sidebarNav');
+    function checkMobile() {
+        if(window.innerWidth <= 900) {
+            sidebarToggle.style.display = 'flex';
+            sidebarNav.classList.remove('open');
+        } else {
+            sidebarToggle.style.display = 'none';
+            sidebarNav.classList.remove('open');
+        }
+    }
+    sidebarToggle.addEventListener('click', function() {
+        sidebarNav.classList.toggle('open');
+    });
+    window.addEventListener('resize', checkMobile);
+    checkMobile();
+});
 </script>
     </footer>
 </aside>

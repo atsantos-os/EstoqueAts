@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->date('data_vencimento')->nullable();
             $table->timestamps();
 
-            $table->foreign('maquinario_id')->references('id_maquinario')->on('maquinarios')->onDelete('cascade');
+            $table->foreign('maquinario_id')->references('id_maquinario')->on('maquinarios')->onDelete('set null');
             $table->foreign('id_fornecedor')->references('id_fornecedor')->on('fornecedores')->onDelete('set null');
         });
     }

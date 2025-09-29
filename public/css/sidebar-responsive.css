@@ -1,0 +1,86 @@
+/* Sidebar/Header responsivo para mobile */
+@media (max-width: 900px) {
+    .sidebar {
+        display: flex !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: 60px !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        z-index: 2000 !important;
+        padding: 0 16px !important;
+        box-shadow: 0 2px 8px rgba(35,85,150,0.08) !important;
+        transition: height 0.3s !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    .sidebar-header {
+        flex-direction: row;
+        align-items: center;
+        padding: 0;
+    }
+    .sidebar-header .brand-link {
+        flex-direction: row;
+        align-items: center;
+    }
+    .sidebar-header .logo-icon {
+        margin-right: 10px;
+    }
+    .sidebar-header .title {
+        font-size: 18px;
+    }
+    .sidebar .divider,
+    .sidebar-footer {
+        display: none;
+    }
+    .sidebar-nav {
+        position: fixed !important;
+        top: 60px !important;
+        left: 0 !important;
+        width: 100vw !important;
+        background: #235596 !important;
+        box-shadow: 0 2px 8px rgba(35,85,150,0.08) !important;
+        display: none !important;
+        flex-direction: column !important;
+        z-index: 1000 !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    .sidebar-nav.open {
+        display: flex !important;
+    }
+    .sidebar-nav ul {
+        flex-direction: column;
+        width: 100%;
+    }
+    .sidebar-nav a {
+        padding: 16px 24px;
+        font-size: 1.1rem;
+        border-radius: 0;
+        margin: 0;
+    }
+    .sidebar-toggle {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background: none !important;
+        border: none !important;
+        color: #fff !important;
+        font-size: 28px !important;
+        cursor: pointer !important;
+        margin-left: 12px !important;
+        z-index: 2100 !important;
+    }
+}
+
+@media (max-width: 900px) {
+    body {
+        padding-left: 0 !important;
+    }
+    .main-content, .cliente-main-padded {
+        padding-left: 0 !important;
+    }
+}

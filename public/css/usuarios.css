@@ -1,4 +1,61 @@
 /* ...existing code... */
+/* PADRÃO GLOBAL DE BOTÕES */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    padding: 0.7em 1.5em;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px #2678a31a;
+    background: #2678a3;
+    color: #fff;
+}
+.btn:hover, .btn:focus {
+    background: #235596;
+    color: #fff;
+}
+.btn-primary {
+    background: linear-gradient(90deg,#2678a3,#3c97c1);
+}
+.btn-primary:hover, .btn-primary:focus {
+    background: #235596;
+}
+.btn-edit {
+    background: #e3f2fd;
+    color: #1976d2;
+}
+.btn-edit:hover, .btn-edit:focus {
+    background: #1976d2;
+    color: #fff;
+}
+.btn-delete {
+    background: #ffeaea;
+    color: #d32f2f;
+}
+.btn-delete:hover, .btn-delete:focus {
+    background: #d32f2f;
+    color: #fff;
+}
+.btn-save {
+    background: linear-gradient(90deg,#27ae60,#2ecc71);
+}
+.btn-save:hover, .btn-save:focus {
+    background: #219150;
+}
+.btn-cancel {
+    background: #b0b0b0;
+    color: #fff;
+}
+.btn-cancel:hover, .btn-cancel:focus {
+    background: #888;
+}
 .main-content > .container,
 .main-content > .section-container {
     margin: 0 auto;
@@ -83,6 +140,11 @@ body, html {
     max-width: 1200px;
     text-align: center;
     transition: all 0.2s ease;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .container:hover {
@@ -138,16 +200,19 @@ body, html {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 1em;
+    margin-left: auto;
+    margin-right: auto;
 }
 .usuario-table th, .usuario-table td {
     padding: 0.7em 0.5em;
     border-bottom: 1px solid #e0e0e0;
-    text-align: left;
+    text-align: center;
 }
 .usuario-table th {
     background: #f7f9fa;
     color: #385f86;
     font-weight: 600;
+    text-align: center;
 }
 .usuario-table tr:last-child td {
     border-bottom: none;

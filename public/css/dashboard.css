@@ -81,7 +81,6 @@
     --card-background: #fff;
     --text-color: #2c3e50;
     --sidebar-width: 250px;
-    --header-height: 70px;
     --border-radius: 12px;
     --shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
 }
@@ -101,7 +100,7 @@ body {
 /* Main content */
 .main-content {
     flex: 1;
-    margin-top: var(--header-height);
+    /* margin-top: var(--header-height); Removido pois header não existe mais */
     display: flex;
     justify-content: center;
     align-items: flex-start;

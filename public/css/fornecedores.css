@@ -1,3 +1,6 @@
+body, html, table, th, td, input, button, select, textarea {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+}
 .main-content {
     /* ...outras propriedades já existentes... */
     margin-left: 250px; /* Igual dashboard.css, centraliza considerando sidebar */
@@ -73,23 +76,13 @@
     margin: 0 2px;
     cursor: pointer;
     transition: background 0.2s, color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
 }
 .btn-acao:hover:not(:disabled) {
     background: #3c97c1;
     color: #fff;
-}
-body, html {
-    font-family: 'Montserrat', Arial, sans-serif !important;
-    background: linear-gradient(135deg,#385f86 0%, #a8c0ff 100%) !important;
-    margin: 0;
-    min-height: 100vh;
-    color: #222;
-}
-.main-content {
-    min-height: 80vh;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
 }
 .section-container {
     background: #fff;

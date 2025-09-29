@@ -84,14 +84,16 @@ body, html {
 
 .categoria-header {
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     margin-bottom: 1.5em;
 }
 .categoria-header h2 {
     color: #385f86;
     margin: 0;
     font-size: 2.2rem;
+    text-align: left;
 
 }
 .btn-nova-categoria {
@@ -104,6 +106,9 @@ body, html {
     padding: 0.7em 1.2em;
     cursor: pointer;
     transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .btn-nova-categoria:hover {
     background: #385f86;
@@ -112,16 +117,19 @@ body, html {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 1em;
+    margin-left: auto;
+    margin-right: auto;
 }
 .categoria-table th, .categoria-table td {
     padding: 0.7em 0.5em;
     border-bottom: 1px solid #e0e0e0;
-    text-align: left;
+    text-align: center;
 }
 .categoria-table th {
     background: #f7f9fa;
     color: #385f86;
     font-weight: 600;
+    text-align: center;
 }
 .categoria-table tr:last-child td {
     border-bottom: none;

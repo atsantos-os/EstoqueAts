@@ -200,7 +200,7 @@
         const closeModalEditarProduto = document.getElementById('closeModalEditarProduto');
         const formEditarProduto = document.getElementById('formEditarProduto');
         let editandoId = null;
-        document.querySelectorAll('tbody#tbodyProdutos .fa-pen').forEach(btn => {
+        document.querySelectorAll('tbody#tbodyProdutos .fa-pen-to-square').forEach(btn => {
             btn.onclick = async function(e) {
                 const tr = e.target.closest('tr');
                 editandoId = tr.querySelector('td').textContent.trim();
