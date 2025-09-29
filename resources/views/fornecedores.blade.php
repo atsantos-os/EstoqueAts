@@ -44,16 +44,18 @@
                             <td>{{ $f->categoria_fornecedor }}</td>
                             <td>{{ $f->responsavel }}</td>
                             <td>
-                                <button type="button" class="btn-acao btn-editar" title="Editar Fornecedor" onclick="abrirModalEditarFornecedor({{ $f->id_fornecedor }}, '{{ addslashes($f->nome_fantasia) }}', '{{ $f->cnpj }}', '{{ addslashes($f->razao_social) }}', '{{ addslashes($f->email) }}', '{{ addslashes($f->telefone) }}', '{{ addslashes($f->categoria_fornecedor) }}', '{{ addslashes($f->responsavel) }}')">
-                                    <i class="fa-solid fa-pen-to-square"></i>
-                                </button>
-                                <form method="POST" action="{{ route('fornecedor.destroy', $f->id_fornecedor) }}" style="display:inline;">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn-acao btn-excluir" title="Excluir Fornecedor" onclick="return confirm('Tem certeza que deseja excluir este fornecedor?')">
-                                        <i class="fa-solid fa-trash"></i>
+                                <div style="display: flex; gap: 8px; align-items: center; justify-content: center;">
+                                    <button type="button" class="btn-acao btn-editar" title="Editar Fornecedor" onclick="abrirModalEditarFornecedor({{ $f->id_fornecedor }}, '{{ addslashes($f->nome_fantasia) }}', '{{ $f->cnpj }}', '{{ addslashes($f->razao_social) }}', '{{ addslashes($f->email) }}', '{{ addslashes($f->telefone) }}', '{{ addslashes($f->categoria_fornecedor) }}', '{{ addslashes($f->responsavel) }}')">
+                                        <i class="fa-solid fa-pen-to-square"></i>
                                     </button>
-                                </form>
+                                    <form method="POST" action="{{ route('fornecedor.destroy', $f->id_fornecedor) }}" style="display:inline;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn-acao btn-excluir" title="Excluir Fornecedor" onclick="return confirm('Tem certeza que deseja excluir este fornecedor?')">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                         @endforeach
@@ -83,6 +85,10 @@
                 </select>
                 <input type="text" name="responsavel" id="editResponsavel" placeholder="Responsável" maxlength="100" class="input-editar-usuario">
                 <button type="submit" class="btn-salvar-editar">Salvar Alterações</button>
+            <div class="botoes-acao-modal" id="botoesAcaoModalEditarFornecedor">
+                <button type="submit" class="btn-salvar-editar">Salvar Alterações</button>
+                <!-- Adicione aqui outros botões de ação do modal, se houver -->
+            </div>
             </form>
             <div id="editarFornecedorMsg" class="novo-usuario-msg"></div>
         </div>

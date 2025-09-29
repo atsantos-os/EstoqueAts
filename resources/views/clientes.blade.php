@@ -70,7 +70,7 @@
                 <input type="text" name="nome_fantasia" placeholder="Nome Fantasia" maxlength="255">
                 <input type="text" name="contrato" placeholder="Contrato" maxlength="100">
                 <input type="text" name="supervisor" placeholder="Supervisor" maxlength="100">
-                <button type="submit">Cadastrar</button>
+                <button type="submit" class="btn btn-save">Cadastrar</button>
             </form>
             <div id="novoClienteMsg" class="novo-cliente-msg"></div>
         </div>

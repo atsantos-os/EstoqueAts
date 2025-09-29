@@ -179,6 +179,7 @@
                             <div><strong>Fornecedor:</strong> ${p.fornecedor?.nome_fantasia || '-'}</div>
                             <div><strong>Estoque:</strong> ${p.estoque?.quantidade ?? 0}</div>
                             <div><strong>Preço:</strong> R$ ${Number(p.preco_produto).toLocaleString('pt-BR', {minimumFractionDigits:2})}</div>
+                            <div><strong>Valor total do estoque:</strong> R$ ${((Number(p.preco_produto)||0)*(p.estoque?.quantidade??0)).toLocaleString('pt-BR', {minimumFractionDigits:2})}</div>
                             <div><strong>Condição:</strong> ${p.condicao || '-'}</div>
                             <div><strong>Tamanho:</strong> ${p.tamanho || '-'}</div>
                         </div>
