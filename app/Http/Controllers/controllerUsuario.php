@@ -28,6 +28,9 @@ class ControllerUsuario extends Controller
 
         $usuario = ModelUsuario::where('cpf', $request->cpfUsuario)->first();
         if ($usuario && \Illuminate\Support\Facades\Hash::check($request->senha, $usuario->senha)) {
+            if (!$usuario->ativo) {
+                return back()->withErrors(['msg' => 'Usuário inativo. Procure o administrador.']);
+            }
             Session::put('user_id', $usuario->id);
             return redirect()->route('dashboard');
         }

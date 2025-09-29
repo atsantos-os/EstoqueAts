@@ -79,12 +79,13 @@
     box-sizing: border-box;
 }
 .mov-container {
+    min-height: 80vh;
     background: #fff;
     border-radius: 18px;
     box-shadow: 0 8px 32px rgba(44, 62, 80, 0.08);
     max-width: 1200px;
     width: 95%;
-    margin: 2.5rem auto;
+    margin: auto 0 auto;
     padding: 2.5rem 2rem;
     display: flex;
     flex-direction: column;

@@ -85,6 +85,7 @@ body, html, table, th, td, input, button, select, textarea {
     color: #fff;
 }
 .section-container {
+    min-height: 80vh;
     background: #fff;
     padding: 2.5em 2em;
     border-radius: 12px;

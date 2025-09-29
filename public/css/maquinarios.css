@@ -74,7 +74,7 @@ body, html {
 .maquinario-table th, .maquinario-table td {
     padding: 0.8em 0.5em;
     border-bottom: 1px solid #e0e0e0;
-    text-align: left;
+    text-align: center;
 }
 .maquinario-table th {
     background: #f7f9fa;

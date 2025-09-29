@@ -122,6 +122,7 @@ body, .cliente-main-padded, .cliente-container, .cliente-header, .btn-novo-clien
      min-height: 100vh;
 }
 .cliente-container {
+    min-height: 80vh;
     background: #fff;
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(35,85,150,0.08);

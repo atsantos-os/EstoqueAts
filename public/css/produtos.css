@@ -225,7 +225,7 @@
 
 
 .produtos-main {
-    min-height: 100vh;
+    /* min-height removido para padronização via .produtos-container */
     background: #f4f8fb;
     display: flex;
     align-items: flex-start;
@@ -236,6 +236,7 @@
 }
 
 .produtos-container {
+    min-height: 80vh;
     background: #fff;
     border-radius: 18px;
     box-shadow: 0 8px 32px rgba(44, 62, 80, 0.08);
@@ -288,7 +289,7 @@
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(44, 62, 80, 0.07);
-    min-height: 260px; /* altura mínima ajustada para melhor visual com poucos itens */
+    /* min-height removido para padronização global */
     max-height: 60vh;
     margin-left: auto;
     margin-right: auto;
